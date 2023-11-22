@@ -1,0 +1,12 @@
+.button {
+  color: #fff;
+  padding: 0.8rem;
+  border-radius: 4px;
+  background: var(--color-disabled);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.action {
+  background: var(--color-accent);
+}

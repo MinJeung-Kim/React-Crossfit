@@ -1,0 +1,25 @@
+.graphBox {
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+  display: grid; 
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 20px;
+  padding: var(--content-padding);
+}
+
+.box {
+  position: relative;
+  background: #fff;
+  padding: var(--content-padding);
+  width: 99%;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+
+@media (max-width: 1018px) {
+  .graphBox {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+}

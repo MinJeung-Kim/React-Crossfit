@@ -1,0 +1,105 @@
+.home_content {
+  position: relative;
+  width: 100%;
+  /* padding-top: 100px; */
+}
+
+.overview_boxes {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 20px;
+  flex-wrap: wrap;
+}
+
+.box {
+  width: calc(100% / 4 - 15px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 14px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.box_topic,
+.number,
+.text {
+  font-family: "poppins_500";
+}
+
+.box_topic {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.number {
+  font-size: 35px;
+  font-weight: 500;
+  margin: 6px 0;
+  display: inline-block;
+}
+
+.indicator {
+  display: flex;
+  align-items: center;
+}
+
+.indicator i {
+  height: 20px;
+  width: 20px;
+  background: #8fdacb;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.indicator .down {
+  background: #e87d88;
+}
+
+.text {
+  font-size: 12px;
+}
+
+.box .cart {
+  font-size: 32px;
+  font-weight: 500;
+  height: 50px;
+  width: 50px;
+  background: #cce5ff;
+  color: #66b0ff;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.box .two {
+  background: #c0f2d8;
+  color: #2bd47d;
+}
+
+.box .three {
+  background: #ffe8b3;
+  color: #ffc233;
+}
+
+.box .four {
+  background: #f7d4d7;
+  color: #e05260;
+}
+
+@media (max-width: 1018px) {
+  .box {
+    width: calc(100% / 2 - 15px);
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 658px) {
+  .box {
+    width: 100%;
+  }
+}

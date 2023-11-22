@@ -1,0 +1,41 @@
+.week_wrapper,
+.content_wrapper {
+  width: 100%;
+  display: flex;
+  padding: 8px 14px;
+  border: 1px solid #ddd;
+}
+
+.week_wrapper {
+  background: hsla(0, 0%, 82%, 0.3);
+  justify-content: space-between;
+}
+
+.content_wrapper {
+  gap: 4.5rem;
+  justify-content: flex-start;
+  padding-bottom: 1rem;
+}
+
+.no_data {
+  text-align: center;
+  margin-top: 5rem;
+  color: #adacb1;
+}
+
+.color_display {
+  width: 0.85rem;
+  height: 0.85rem;
+  background: var(--color-disabled);
+  border-radius: 50%;
+}
+
+.green {
+  background: green;
+}
+
+.user_names {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.8rem;
+}

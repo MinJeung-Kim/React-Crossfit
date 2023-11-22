@@ -1,0 +1,50 @@
+.input_field {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.input_field input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 0 35px;
+  font-size: 16px;
+  border-bottom: 2px solid #ccc;
+  border-top: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.input_field input:is(:focus, :valid) {
+  border-bottom-color: #4070f4;
+}
+
+.input_field i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 23px;
+}
+
+.input_field input:is(:focus, :valid) ~ i {
+  color: #4070f4;
+}
+
+.input_field i.icon {
+  left: 0;
+}
+
+.input_field i.showHidePw {
+  right: 0;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.errorMsg {
+  color: #ff4100;
+  margin: 0.3rem 0 0 0.8rem;
+  font-size: 0.85rem;
+  display: block;
+}

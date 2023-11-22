@@ -1,0 +1,16 @@
+.schedule {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  padding: 1rem;
+}
+
+.box {
+  width: 99%;
+  min-height: 80vh;
+  position: relative;
+  background: #fff;
+  padding: var(--content-padding);
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}

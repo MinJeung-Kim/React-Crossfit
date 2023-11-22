@@ -1,0 +1,30 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  position: fixed;
+  right: 2.5%;
+  bottom: 5%;
+}
+
+.chat_button {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  background: #fff;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 24px;
+  border: 1px solid #eeeeee;
+  box-shadow: 2px 6px 6px 2px #e5e5ec;
+}
+
+.chat_button > svg {
+  width: 2rem;
+  height: auto;
+  color: #3b4596;
+}

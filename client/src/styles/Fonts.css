@@ -1,0 +1,69 @@
+/*
+한글 
+제목(NanumSquare) ,내용(NanumBarunGothic)
+*/
+
+@font-face {
+  font-family: "NanumSquare_ExtraBold"; /* 아주 굵은 */
+  src: url("../../public/fonts/nanum-square/NanumSquare_acEB.ttf");
+}
+
+@font-face {
+  font-family: "NanumSquare_Bold"; /* 굵은 */
+  src: url("../../public/fonts/nanum-square/NanumSquare_acB.ttf");
+}
+
+@font-face {
+  font-family: "NanumSquare_Regular"; /* 중간 */
+  src: url("../../public/fonts/nanum-square/NanumSquare_acR.ttf");
+}
+
+@font-face {
+  font-family: "NanumSquare_Light"; /* 가는 */
+  src: url("../../public/fonts/nanum-square/NanumSquare_acL.ttf");
+}
+
+@font-face {
+  font-family: "NanumBarunGothic_Bold"; /* 굵은 */
+  src: url("../../public/fonts/nanum-barun-gothic/NanumBarunGothicBold.ttf");
+}
+
+@font-face {
+  font-family: "NanumBarunGothic_Regular"; /* 중간 */
+  src: url("../../public/fonts/nanum-barun-gothic/NanumBarunGothic.ttf");
+}
+
+@font-face {
+  font-family: "NanumBarunGothic_Light"; /* 가는 */
+  src: url("../../public/fonts/nanum-barun-gothic/NanumBarunGothicLight.ttf");
+}
+
+/*
+영문 
+제목(NanumSquare) ,내용(NanumBarunGothic)
+*/
+
+@font-face {
+  font-family: "poppins_300";
+  src: url("../../public/fonts/poppins/Poppins-Light.ttf");
+}
+
+@font-face {
+  font-family: "poppins_400";
+  src: url("../../public/fonts/poppins/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: "poppins_500";
+  src: url("../../public/fonts/poppins/Poppins-Medium.ttf");
+}
+
+@font-face {
+  font-family: "poppins_600";
+  src: url("../../public/fonts/poppins/Poppins-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "poppins_700";
+  src: url("../../public/fonts/poppins/Poppins-Bold.ttf");
+}

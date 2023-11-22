@@ -1,0 +1,90 @@
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #b1bbd1;
+}
+
+.week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.week:not(:last-of-type) {
+  border-bottom: 1px solid #b1bbd1;
+}
+
+.week > div:not(:last-of-type) {
+  border-right: 1px solid #b1bbd1;
+}
+
+.weekday {
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.week,
+.day {
+  color: #5d6b8b;
+}
+
+.days {
+  min-height: 7rem;
+  padding: 0.85rem;
+  cursor: pointer;
+}
+
+.days:hover {
+  background: #e6e7e9;
+}
+
+.day {
+  font-size: 1.5rem;
+}
+
+.day_box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.today {
+  width: 38px;
+  height: auto;
+  padding: 0.3rem 0.4rem;
+  border-radius: 50%;
+  background: #656ccd;
+  color: #fff;
+}
+
+.over_count {
+  display: flex;
+  align-items: center;
+  color: aliceblue;
+  font-size: 0.85rem;
+  padding: 0 0.3rem;
+  border-radius: 4px;
+  background: #2f3ecd;
+}
+
+.afterThisMonth {
+  color: var(--color-disabled);
+}
+
+.data {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  background: yellowgreen;
+  padding: 0.5rem 0.4rem;
+  border-radius: 8px;
+}
+
+.time,
+.name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: azure;
+}
