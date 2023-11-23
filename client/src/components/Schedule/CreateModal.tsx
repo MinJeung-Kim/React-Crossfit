@@ -1,10 +1,9 @@
 import { Dialog } from "primereact/dialog";
 import { Calendar, CalendarChangeParams } from "primereact/calendar";
 
-import TimeButtons from "./TimeButtons";
-import { getSchedule, postSchedule } from "service/schedule";
+import TimeButtons from "./TimeButtons"; 
 
-import { useAuthContext } from "context/AuthContext";
+import { useAuth } from "context/AuthContext";
 import { useScheduleContext } from "context/ScheduleContext";
 import DialogFooter from "components/common/Buttons/DialogFooter";
 
@@ -12,7 +11,7 @@ import styles from "./Schedule.module.css";
 import { TODAY } from "util/schedule";
 
 export default function CreateModal() {
-  const { userInfo } = useAuthContext();
+  const { userInfo } = useAuth();
   const {
     selectedDate,
     setSelectedDate,
@@ -36,26 +35,26 @@ export default function CreateModal() {
 
   const handleSave = async () => {
     setIsOpen(false);
-    try {
-      const postPayload = await postSchedule({
-        insDt: selectedDate.date,
-        time: selectedTime,
-        userName: userInfo.name,
-        week: selectedDate.week,
-      });
-      if (postPayload) {
-        try {
-          const getPayload = await getSchedule();
-          if (getPayload) {
-            setData(getPayload);
-          }
-        } catch (getScheduleError) {
-          console.error("Error fetching schedule:", getScheduleError);
-        }
-      }
-    } catch (postScheduleError) {
-      console.error("Error posting schedule:", postScheduleError);
-    }
+    // try {
+    //   const postPayload = await postSchedule({
+    //     insDt: selectedDate.date,
+    //     time: selectedTime,
+    //     userName: userInfo.name,
+    //     week: selectedDate.week,
+    //   });
+    //   if (postPayload) {
+    //     try {
+    //       const getPayload = await getSchedule();
+    //       if (getPayload) {
+    //         setData(getPayload);
+    //       }
+    //     } catch (getScheduleError) {
+    //       console.error("Error fetching schedule:", getScheduleError);
+    //     }
+    //   }
+    // } catch (postScheduleError) {
+    //   console.error("Error posting schedule:", postScheduleError);
+    // }
   };
   const calendarValue =
     typeof selectedDate.date === "string"

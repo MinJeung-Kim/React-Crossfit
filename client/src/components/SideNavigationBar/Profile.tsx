@@ -1,11 +1,21 @@
 import { RiLogoutCircleRLine } from "react-icons/ri";
 
-import { useAuthContext } from "context/AuthContext";
+import {   useAuth } from "context/AuthContext";
 
 import styles from "./SideNavigationBar.module.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
-  const { userInfo, onLogout } = useAuthContext();
+  const navigate = useNavigate();
+  const { userInfo, logout } = useAuth();
+
+  const onLogout = () => {
+    if (window.confirm("Do you want to log out?")) {
+      logout();
+      navigate("/login");
+    }
+  };
+
   return (
     <div className={styles.profile_details} onClick={onLogout}>
       <div className={styles.profile_content}>

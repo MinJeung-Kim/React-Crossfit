@@ -1,6 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import { CookiesProvider } from "react-cookie";
+import ReactDOM from "react-dom/client"; 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App";
@@ -8,49 +7,42 @@ import reportWebVitals from "./reportWebVitals";
 
 import NotFound from "./pages/NotFound";
 import Users from "./pages/Users/Users";
-import Singnin from "./pages/Singnin/Singnin";
+import Login from "./pages/Singnin/Login";
 import Scheduler from "pages/Schedule/Scheduler";
 import Dashboard from "./pages/Dashboard/Dashboard";
 
-import { AuthContextProvider } from "./context/AuthContext";
+import { AuthProvider, AuthErrorEventBus } from "./context/AuthContext";
 import { ModeProvider } from "./context/ModeContext";
 
 import "./index.css";
 import "./styles/App.global.css";
+import TokenStorage from "db/token";
+import HttpClient from "network/http";
+import AuthService from "service/auth"; 
+import Socket from "network/socket";
+import ScheduleService from "service/schedule"; 
 
-const router = createBrowserRouter([
-  {
-    path: "/login",
-    element: <Singnin />,
-    errorElement: <NotFound />,
-  },
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <NotFound />,
-    children: [
-      {
-        index: true,
-        element: <Dashboard />,
-      },
-      { path: "/users", element: <Users /> },
-      { path: "/schedule", element: <Scheduler /> },
-    ],
-  },
-]);
+const baseURL = process.env.REACT_APP_BASE_URL ?? '';
+const tokenStorage = new TokenStorage();
+// AuthErrorEventBus : 토큰이 만료되었을 경우 login페이지로 이동하는 class
+const authErrorEventBus = new AuthErrorEventBus();
+const httpClient = new HttpClient(baseURL, authErrorEventBus);
+const authService = new AuthService(httpClient, tokenStorage);
+const scheduleService = new ScheduleService(httpClient, tokenStorage );
+// const socketClient = new Socket(baseURL, () => tokenStorage.getToken());
+ 
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <CookiesProvider>
-      <AuthContextProvider>
-        <ModeProvider>
-          <RouterProvider router={router} />
-        </ModeProvider>
-      </AuthContextProvider>
-    </CookiesProvider>
+  <React.StrictMode> 
+      <AuthProvider 
+      authService={authService}
+      authErrorEventBus={authErrorEventBus}>
+        {/* <ModeProvider> 
+        </ModeProvider> */}
+      </AuthProvider> 
   </React.StrictMode>
 );
 

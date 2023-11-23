@@ -1,4 +1,4 @@
-import { FormEvent } from "react";
+import { ChangeEvent, FormEvent } from "react";
 
 import { FiLock } from "react-icons/fi";
 import { HiOutlineMail } from "react-icons/hi";
@@ -12,32 +12,34 @@ import styles from "./Login.module.css";
 import LoadDataButton from "components/common/Buttons/LoadDataButton";
 
 type Props = {
-  onSubmitAccount: (e: FormEvent<HTMLFormElement>) => Promise<void>;
-};
+  username: string;
+  password: string;
+  onSubmit: (e: FormEvent<HTMLFormElement>) => void;
 
-export default function LoginForm({ onSubmitAccount }: Props) {
+  onChange:(e: ChangeEvent<HTMLInputElement>)=> void};
+
+export default function LoginForm({ onSubmit, username, password,onChange }: Props) {
   const { users, setUsers } = useUserContext();
   const { handleBlur } = useValid();
 
   return (
-    <form onSubmit={onSubmitAccount}>
-      <Input
-        name="email"
-        placeholder="Enter your email"
-        icon={<HiOutlineMail />}
-        inputs={users}
-        setInputs={setUsers}
-        onBlur={handleBlur}
+    <form onSubmit={onSubmit}>
+      <input
+        name="username"
+        type="text"
+        placeholder="Id"
+        value={username}
+        onChange={onChange}
+        className="form-input"
+        required
       />
-
-      <Input
+      <input
         name="password"
         type="password"
-        placeholder="Enter your Password"
-        icon={<FiLock />}
-        hideIcon={<GrFormViewHide />}
-        inputs={users}
-        setInputs={setUsers}
+        placeholder="Password"
+        value={password}
+        className="form-input"
+        onChange={onChange}
       />
 
       <RememberMeOption />

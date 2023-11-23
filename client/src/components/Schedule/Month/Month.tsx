@@ -2,8 +2,7 @@ import { useEffect } from "react";
 
 import Week from "./Week";
 import Weekdays from "./Weekdays";
-
-import { getSchedule } from "service/schedule";
+ 
 import { useScheduleContext } from "context/ScheduleContext";
 import { getWeeksInMonth } from "util/schedule";
 
@@ -14,14 +13,14 @@ export default function Month() {
   const weeksInMonth = getWeeksInMonth(currentDate);
 
   const fetchSchedule = async () => {
-    try {
-      const payload = await getSchedule();
-      if (payload) {
-        setData(payload);
-      }
-    } catch (error) {
-      console.error(error);
-    }
+    // try {
+    //   const payload = await getSchedule();
+    //   if (payload) {
+    //     setData(payload);
+    //   }
+    // } catch (error) {
+    //   console.error(error);
+    // }
   };
 
   useEffect(() => {

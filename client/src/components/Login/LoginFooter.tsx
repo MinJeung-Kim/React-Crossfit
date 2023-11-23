@@ -1,4 +1,4 @@
-import { useAuthContext } from "context/AuthContext";
+import { useAuth } from "context/AuthContext";
 import styles from "./Login.module.css";
 
 type Props = {
@@ -6,7 +6,7 @@ type Props = {
   btnText: string;
 };
 export default function LoginFooter({ text, btnText }: Props) {
-  const { onChangeConnectForm } = useAuthContext();
+  const { onChangeConnectForm } = useAuth();
 
   return (
     <div className={styles.login_signup}>
