@@ -1,4 +1,4 @@
-import { FormEvent, ChangeEvent, useState } from "react";
+import { FormEvent, ChangeEvent, useState, useContext } from "react";
 
 // import Login from "../../components/Login/Login";
 import Registration from "../../components/Registration/Registration";
@@ -10,19 +10,11 @@ import LoginFooter from "components/Login/LoginFooter";
 import SocialMedia from "components/Login/SocialMedia";
 
 import styles from "./Login.module.css";
+import { AuthContext } from "context/AuthContext";
 
-type Props = {
-  onSignUp: (
-    username: string,
-    password: string,
-    name: string,
-    email: string,
-    url: string
-  ) => void;
-  onLogin: (username: string, password: string) => void;
-};
+export default function Login() {
+  const {   signUp, logIn } = useContext(AuthContext);
 
-export default function Login({ onSignUp, onLogin }: Props) {
   const { users, setUsers, setErrorMsg } = useUserContext();
   const [signup, setSignup] = useState(false);
   const [username, setUsername] = useState("");
@@ -37,13 +29,13 @@ export default function Login({ onSignUp, onLogin }: Props) {
     event.preventDefault();
     if (signup) {
       try {
-        onSignUp(username, password, name, email, url);
+        signUp(username, password, name, email, url);
       } catch (error: any) {
         setErrorMsg(error);
       }
     } else {
       try {
-        onLogin(username, password);
+        logIn(username, password);
       } catch (error: any) {
         setErrorMsg(error);
       }

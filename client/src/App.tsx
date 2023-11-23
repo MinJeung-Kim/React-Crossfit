@@ -19,15 +19,15 @@ import "primeflex/primeflex.css";
 import styles from "./App.module.css";
 
 const App: React.FC = () => {
-  const { userInfo, signUp, logIn } = useContext(AuthContext);
+  const { userInfo  } = useContext(AuthContext);
   const [isActive, setIsActive] = useState(false);
   console.log(userInfo);
-  
+
   return (
     <main className={styles.root}>
       {userInfo.email === "" ? (
         <UserProvider>
-          <Login onSignUp={signUp} onLogin={logIn} />
+          <Login />
         </UserProvider>
       ) : (
         <LanguageProvider>
