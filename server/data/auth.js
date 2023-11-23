@@ -1,14 +1,6 @@
 import SQ from "sequelize";
 import { sequelize } from "../db/database.js";
 
-type UserType = {
-  username: string;
-  password: string;
-  name: string;
-  email: string;
-  url?: string;
-};
-
 const DataTypes = SQ.DataTypes;
 
 export const User = sequelize.define(
@@ -41,18 +33,14 @@ export const User = sequelize.define(
   { timestamps: false }
 );
 
-type UserInstance = InstanceType<typeof User>;
-
-export async function findByUsername(
-  username: string
-): Promise<UserInstance | null> {
+export async function findByUsername(username) {
   return User.findOne({ where: { username } });
 }
 
-export async function findById(id: string): Promise<UserInstance | null> {
+export async function findById(id) {
   return User.findByPk(id);
 }
 
-export async function createUser(user: UserType): Promise<string> {
-  return User.create(user).then((data: UserInstance) => data.dataValues.id);
+export async function createUser(user) {
+  return User.create(user).then((data) => data.dataValues.id);
 }
