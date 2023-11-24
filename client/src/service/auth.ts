@@ -20,7 +20,7 @@ interface UserResponse extends ApiResponse {
   username: string;
   name: string;
   email: string;
-  url?: string;
+  phone: string;
 }
 
 export default class AuthService {
@@ -37,7 +37,7 @@ export default class AuthService {
     password: string,
     name: string,
     email: string,
-    url?: string
+    phone: string
   ): Promise<AuthResponse> {
     const data = await this.http.fetch("/auth/signup", {
       method: "POST",
@@ -46,7 +46,7 @@ export default class AuthService {
         password,
         name,
         email,
-        url,
+        phone,
       }),
     });
     this.tokenStorage.saveToken(data.token);
@@ -62,6 +62,7 @@ export default class AuthService {
       }),
     });
     this.tokenStorage.saveToken(data.token);
+
     return data;
   }
 

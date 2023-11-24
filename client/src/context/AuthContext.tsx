@@ -1,30 +1,26 @@
 import {
   createContext,
-  createRef,
   useCallback,
   useContext,
   useEffect,
-  useImperativeHandle,
   useState,
 } from "react";
 import AuthService from "service/auth";
-import Login from "pages/Singnin/Login";
 
-export type User = { [key: string]: string };
+export type User = { [key: string]: string } | undefined;
 
 type State = {
   isConnect: boolean;
   setIsConnect: React.Dispatch<React.SetStateAction<boolean>>;
   userInfo: User;
   setUserInfo: React.Dispatch<React.SetStateAction<User>>;
-  onChangeConnectForm: () => void;
   logout: () => void;
   signUp: (
     username: string,
     password: string,
     name: string,
     email: string,
-    url: string
+    phone: string
   ) => Promise<void>;
   logIn: (username: string, password: string) => Promise<void>;
 };
@@ -35,7 +31,6 @@ type UserResponse = {
 };
 
 export const AuthContext = createContext<State>({} as State);
-const contextRef = createRef();
 
 export function AuthProvider({
   authService,
@@ -47,21 +42,11 @@ export function AuthProvider({
   children: React.ReactNode;
 }) {
   const [isConnect, setIsConnect] = useState(true);
-  const [userInfo, setUserInfo] = useState<User>({});
-  // const [user, setUser] = useState(undefined);
-
-  useImperativeHandle(contextRef, () =>
-    userInfo ? userInfo.token : undefined
-  );
-
-  const onChangeConnectForm = () => {
-    setIsConnect(!isConnect);
-  };
+  const [userInfo, setUserInfo] = useState<User>(undefined);
 
   useEffect(() => {
-    authErrorEventBus.listen((err: any) => {
-      console.log(err);
-      setUserInfo({});
+    authErrorEventBus.listen((err: any) => { 
+      setUserInfo(undefined);
     });
   }, [authErrorEventBus]);
 
@@ -78,10 +63,10 @@ export function AuthProvider({
       password: string,
       name: string,
       email: string,
-      url: string
+      phone: string
     ): Promise<void> =>
       authService
-        .signup(username, password, name, email, url)
+        .signup(username, password, name, email, phone)
         .then((user) => setUserInfo({ ...user })),
     [authService]
   );
@@ -97,8 +82,7 @@ export function AuthProvider({
   const logout = useCallback(
     async () =>
       authService.logout().then(() => {
-        console.log("sss");
-        setUserInfo({});
+        setUserInfo(undefined);
       }),
     [authService]
   );
@@ -108,7 +92,6 @@ export function AuthProvider({
       value={{
         isConnect,
         setIsConnect,
-        onChangeConnectForm,
         userInfo,
         setUserInfo,
         logout,
@@ -116,13 +99,6 @@ export function AuthProvider({
         logIn,
       }}
     >
-      {/* {userInfo ? (
-        children
-      ) : (
-        <div className="app">
-          <Login onSignUp={signUp} onLogin={logIn} />
-        </div>
-      )} */}
       {children}
     </AuthContext.Provider>
   );
@@ -140,5 +116,4 @@ export class AuthErrorEventBus {
   }
 }
 
-export const fetchToken = () => contextRef.current;
 export const useAuth = () => useContext(AuthContext);

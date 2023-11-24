@@ -5,7 +5,7 @@ import * as userRepository from "../data/auth.js";
 import { config } from "../config.js";
 
 export async function signup(req, res) {
-  const { username, password, name, email, url } = req.body;
+  const { username, password, name, email, phone } = req.body;
   const found = await userRepository.findByUsername(username);
 
   if (found) {
@@ -18,15 +18,16 @@ export async function signup(req, res) {
     password: hashed,
     name,
     email,
-    url,
+    phone,
   });
-  
+
   const token = createJwtToken(userId);
-  res.status(201).json({ token, username });
+  // res.status(201).json({ token, username });
+  res.status(201).json({ message: `created user ${username}` });
 }
 
 export async function login(req, res) {
-  const { username, password } = req.body;
+  const { username, password, name } = req.body;
   const user = await userRepository.findByUsername(username);
   if (!user) {
     return res.status(401).json({ message: "Invalid user or password" });
@@ -35,8 +36,9 @@ export async function login(req, res) {
   if (!isValidPassword) {
     return res.status(401).json({ message: "Invalid user or password" });
   }
+
   const token = createJwtToken(user.id);
-  res.status(200).json({ token, username });
+  res.status(200).json({ token, username, name });
 }
 
 function createJwtToken(id) {
@@ -50,5 +52,8 @@ export async function me(req, res) {
   if (!user) {
     return res.status(404).json({ message: "User not found" });
   }
-  res.status(200).json({ token: req.token, username: user.username });
+  // res
+  //   .status(200)
+  //   .json({ token: req.token, username: user.username, name: user.name });
+  res.status(200).json({ username: user.username, name: user.name });
 }

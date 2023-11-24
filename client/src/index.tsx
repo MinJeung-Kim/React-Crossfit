@@ -7,7 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 
 import NotFound from "./pages/NotFound";
 import Users from "./pages/Users/Users";
-import Login from "./pages/Singnin/Login";
+import Login from "./pages/Login/Login";
 import Scheduler from "pages/Schedule/Scheduler";
 import Dashboard from "./pages/Dashboard/Dashboard";
 

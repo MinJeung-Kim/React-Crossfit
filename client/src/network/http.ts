@@ -17,8 +17,7 @@ export default class HttpClient {
     this.authErrorEventBus = authErrorEventBus;
   }
 
-  async fetch(url: string, options: FetchOptions) {
-    console.log(`${this.baseURL}${url}`);
+  async fetch(url: string, options: FetchOptions) { 
     const res = await fetch(`${this.baseURL}${url}`, {
       ...options,
       headers: {

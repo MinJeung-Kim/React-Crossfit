@@ -18,10 +18,10 @@
   align-items: center;
 }
 
-.logo_details i {
+.logo_details .icon {
   font-size: 30px;
   color: var(--color-dark-text);
-  height: 50px;
+  height: 40px;
   min-width: 78px;
   text-align: center;
   line-height: 50px;

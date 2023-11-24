@@ -1,0 +1,79 @@
+.input_form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.input_field {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.input_field input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 0 35px;
+  font-size: 16px;
+  border-bottom: 2px solid #ccc;
+  border-top: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.input_field input:is(:focus, :valid) {
+  border-bottom-color: #4070f4;
+}
+
+/* .input_field input:is(:focus, :valid) ~ i {
+  color: #4070f4;
+} */
+
+.icon,
+.showHidePw {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 23px;
+  z-index: 99;
+}
+
+.icon {
+  left: 0;
+}
+
+.showHidePw {
+  right: 0;
+  cursor: pointer;
+}
+
+.checkbox_text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.checkbox_content {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox_content input {
+  margin: 0 8px -2px 4px;
+  accent-color: #4070f4;
+}
+
+.text,
+.remember_text {
+  color: #333;
+  font-size: 14px;
+}
+
+.remember_text:hover {
+  color: #4070f4;
+  cursor: pointer;
+  text-decoration: underline;
+}

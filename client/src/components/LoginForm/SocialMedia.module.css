@@ -1,0 +1,49 @@
+
+.media_options {
+    padding: 0.7rem 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .field i {
+    height: 46px;
+    width: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ccc;
+    margin: 0 0.45rem;
+    color: #999;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    transition: all 0.5s ease;
+  }
+  
+  .field i:hover {
+    color: #4070f4;
+    border-color: #4070f4;
+    cursor: pointer;
+  }
+  
+  .field {
+    display: inline-block;
+    color: deeppink;
+    font-weight: bold;
+  }
+  
+  .tooltip {
+    display: none;
+    position: absolute;
+    max-width: 200px;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 0.8em;
+    color: white;
+    background: #4070f4;
+    transition: all 0.5s ease;
+  }
+  
+  .field:hover .tooltip {
+    display: block;
+  }

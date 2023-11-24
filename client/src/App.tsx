@@ -1,14 +1,13 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 import Chat from "components/Chat/Chat";
 import SearchHeader from "./components/SearchHeader/SearchHeader";
 import SideNavigationBar from "./components/SideNavigationBar/SideNavigationBar";
 
-import Login from "./pages/Singnin/Login";
+import Login from "./pages/Login/Login";
 
-import UserProvider from "context/UserContext";
-import { AuthContext } from "./context/AuthContext";
+import { useAuth } from "./context/AuthContext";
 import LanguageProvider from "context/LanguageContext";
 
 import "primeicons/primeicons.css";
@@ -19,16 +18,13 @@ import "primeflex/primeflex.css";
 import styles from "./App.module.css";
 
 const App: React.FC = () => {
-  const { userInfo  } = useContext(AuthContext);
+  const { userInfo } = useAuth();
   const [isActive, setIsActive] = useState(false);
-  console.log(userInfo);
 
   return (
     <main className={styles.root}>
-      {userInfo.email === "" ? (
-        <UserProvider>
-          <Login />
-        </UserProvider>
+      {userInfo == null ? (
+        <Login />
       ) : (
         <LanguageProvider>
           <SideNavigationBar isActive={isActive} />
@@ -39,14 +35,6 @@ const App: React.FC = () => {
           </section>
         </LanguageProvider>
       )}
-      {/* <LanguageProvider>
-          <SideNavigationBar isActive={isActive} />
-          <section className={styles.container}>
-            <SearchHeader isActive={isActive} setIsActive={setIsActive} />
-            <Outlet />
-            <Chat />
-          </section>
-        </LanguageProvider> */}
     </main>
   );
 };

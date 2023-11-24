@@ -1,5 +1,5 @@
 import { socialMedia } from "util/socialMedia";
-import styles from "./Login.module.css";
+import styles from "./SocialMedia.module.css";
 
 export default function SocialMedia() {
   return (
