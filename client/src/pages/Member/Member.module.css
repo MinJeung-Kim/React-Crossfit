@@ -1,0 +1,13 @@
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  padding: var(--content-padding);
+}
+.member_wrap {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}

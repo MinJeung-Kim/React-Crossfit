@@ -17,6 +17,7 @@ import TokenStorage from "db/token";
 import Socket from "network/socket";
 import HttpClient from "network/http";
 import AuthService from "service/auth";
+import MemberService from "service/member";
 import ScheduleService from "service/schedule";
 
 import "./index.css";
@@ -27,8 +28,9 @@ const tokenStorage = new TokenStorage();
 // AuthErrorEventBus : 토큰이 만료되었을 경우 login페이지로 이동하는 class
 const authErrorEventBus = new AuthErrorEventBus();
 const httpClient = new HttpClient(baseURL, authErrorEventBus);
-const authService = new AuthService(httpClient, tokenStorage);
+ const authService = new AuthService(httpClient, tokenStorage);
 export const scheduleService = new ScheduleService(httpClient, tokenStorage);
+export const memberService = new MemberService(httpClient, tokenStorage);
 // const socketClient = new Socket(baseURL, () => tokenStorage.getToken());
 const router = createBrowserRouter([
   {

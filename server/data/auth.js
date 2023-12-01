@@ -4,7 +4,7 @@ import { sequelize } from "../db/database.js";
 const DataTypes = SQ.DataTypes;
 
 export const User = sequelize.define(
-  "user",
+  "member",
   {
     id: {
       type: DataTypes.INTEGER,
