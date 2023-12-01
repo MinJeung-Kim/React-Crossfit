@@ -7,6 +7,7 @@ import {
   startOfWeek,
   format,
   endOfWeek,
+  getDay,
 } from "date-fns";
 import { utcToZonedTime } from "date-fns-tz";
 import _ from "lodash";
@@ -28,13 +29,13 @@ export const TIME_SLOTS = [
 ];
 
 export const WEEKS: Weekdays = {
-  Sunday: 0,
-  Monday: 1,
-  Tuesday: 2,
-  Wednesday: 3,
-  Thursday: 4,
-  Friday: 5,
-  Saturday: 6,
+  Sun: 0,
+  Mon: 1,
+  Tue: 2,
+  Wed: 3,
+  Thu: 4,
+  Fri: 5,
+  Sat: 6,
 };
 
 const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -100,8 +101,11 @@ export const filterSchedulesForDay = (
   data: ScheduleType[],
   currentDay: string
 ) => {
-  const filteredData = data.filter(({ insDt }) => {
-    const formatDate = format(new Date(insDt), DATE_FORMAT);
+  const filteredData = data.filter(({ rezDate }) => {
+    const formatDate = format(
+      new Date(String(rezDate).split(" ")[0]),
+      DATE_FORMAT
+    );
     return formatDate === currentDay;
   });
 
@@ -109,4 +113,10 @@ export const filterSchedulesForDay = (
 
   const countSchedules = filteredData.length - 2 ?? 0;
   return { displayItems, countSchedules };
+};
+
+export const setWeek = (date: Date) => {
+  const dayOfWeek = getDay(date);
+  const dayName = Object.keys(WEEKS).find((key) => WEEKS[key] === dayOfWeek);
+  return dayName;
 };

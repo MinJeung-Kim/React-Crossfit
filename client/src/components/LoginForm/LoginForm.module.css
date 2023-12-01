@@ -30,8 +30,7 @@
   color: #4070f4;
 } */
 
-.icon,
-.showHidePw {
+.input_field > svg {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -40,11 +39,11 @@
   z-index: 99;
 }
 
-.icon {
+.input_field > svg:nth-child(1) {
   left: 0;
 }
 
-.showHidePw {
+.input_field > svg:nth-child(3) {
   right: 0;
   cursor: pointer;
 }

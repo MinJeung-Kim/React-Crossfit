@@ -20,23 +20,6 @@
   padding: 30px;
 }
 
-.title {
-  position: relative;
-  font-size: 27px;
-  font-weight: 600;
-  padding-bottom: 4px;
-}
-
-.title:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 3px;
-  width: 30px;
-  background: #4070f4;
-  border-radius: 25px;
-}
 /* 
 .input_field {
   position: relative;

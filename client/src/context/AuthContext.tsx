@@ -10,8 +10,6 @@ import AuthService from "service/auth";
 export type User = { [key: string]: string } | undefined;
 
 type State = {
-  isConnect: boolean;
-  setIsConnect: React.Dispatch<React.SetStateAction<boolean>>;
   userInfo: User;
   setUserInfo: React.Dispatch<React.SetStateAction<User>>;
   logout: () => void;
@@ -41,11 +39,10 @@ export function AuthProvider({
   authErrorEventBus: AuthErrorEventBus;
   children: React.ReactNode;
 }) {
-  const [isConnect, setIsConnect] = useState(true);
   const [userInfo, setUserInfo] = useState<User>(undefined);
 
   useEffect(() => {
-    authErrorEventBus.listen((err: any) => { 
+    authErrorEventBus.listen((err: any) => {
       setUserInfo(undefined);
     });
   }, [authErrorEventBus]);
@@ -90,8 +87,6 @@ export function AuthProvider({
   return (
     <AuthContext.Provider
       value={{
-        isConnect,
-        setIsConnect,
         userInfo,
         setUserInfo,
         logout,

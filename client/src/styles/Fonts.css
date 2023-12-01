@@ -1,69 +1,27 @@
-/*
-한글 
-제목(NanumSquare) ,내용(NanumBarunGothic)
-*/
-
 @font-face {
-  font-family: "NanumSquare_ExtraBold"; /* 아주 굵은 */
-  src: url("../../public/fonts/nanum-square/NanumSquare_acEB.ttf");
+  font-family: "GmarketSans-Light";
+  font-style: normal;
+  src: url("../assets/fonts/GmarketSansTTFLight.ttf") format("truetype");
 }
-
 @font-face {
-  font-family: "NanumSquare_Bold"; /* 굵은 */
-  src: url("../../public/fonts/nanum-square/NanumSquare_acB.ttf");
+  font-family: "Jalnan";
+  font-style: normal;
+  src: url("../assets/fonts/Jalnan2TTF.ttf") format("truetype");
 }
-
 @font-face {
-  font-family: "NanumSquare_Regular"; /* 중간 */
-  src: url("../../public/fonts/nanum-square/NanumSquare_acR.ttf");
+  font-family: "Jalnan-Gothic";
+  font-style: normal;
+  src: url("../assets/fonts/JalnanGothicTTF.ttf") format("truetype");
 }
-
 @font-face {
-  font-family: "NanumSquare_Light"; /* 가는 */
-  src: url("../../public/fonts/nanum-square/NanumSquare_acL.ttf");
-}
-
+  font-family: "NanumSquare";
+  font-style: normal;
+  src: url("../assets/fonts/NanumSquareB.ttf") format("truetype");
+  unicode-range: U+AC00-D7A3;
+} 
 @font-face {
-  font-family: "NanumBarunGothic_Bold"; /* 굵은 */
-  src: url("../../public/fonts/nanum-barun-gothic/NanumBarunGothicBold.ttf");
-}
-
-@font-face {
-  font-family: "NanumBarunGothic_Regular"; /* 중간 */
-  src: url("../../public/fonts/nanum-barun-gothic/NanumBarunGothic.ttf");
-}
-
-@font-face {
-  font-family: "NanumBarunGothic_Light"; /* 가는 */
-  src: url("../../public/fonts/nanum-barun-gothic/NanumBarunGothicLight.ttf");
-}
-
-/*
-영문 
-제목(NanumSquare) ,내용(NanumBarunGothic)
-*/
-
-@font-face {
-  font-family: "poppins_300";
-  src: url("../../public/fonts/poppins/Poppins-Light.ttf");
-}
-
-@font-face {
-  font-family: "poppins_400";
-  src: url("../../public/fonts/poppins/Poppins-Regular.ttf");
-}
-
-@font-face {
-  font-family: "poppins_500";
-  src: url("../../public/fonts/poppins/Poppins-Medium.ttf");
-}
-
-@font-face {
-  font-family: "poppins_600";
-  src: url("../../public/fonts/poppins/Poppins-SemiBold.ttf");
-}
-
-@font-face {
-  font-family: "poppins_700";
-  src: url("../../public/fonts/poppins/Poppins-Bold.ttf");
+  font-family: "Roboto";
+  font-style: normal;
+  src: url("../assets/fonts/Roboto-Regular.ttf") format("truetype");
+  unicode-range:U+0041-005A, U+0061-007A, U+0030-0039;
 }

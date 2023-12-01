@@ -1,12 +1,17 @@
 .schedule {
-  display: flex;
-  flex-direction: column;
-  margin-top: 100px;
+  /* display: flex; 
+  gap: 0.8rem;
+  margin-top: 10px;  */
   padding: 1rem;
+
+}
+
+.wrapper{
+  display: flex;
 }
 
 .box {
-  width: 99%;
+  width: 100%;
   min-height: 80vh;
   position: relative;
   background: #fff;

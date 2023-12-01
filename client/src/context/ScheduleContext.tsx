@@ -6,14 +6,16 @@ import { ScheduleType } from "service/schedule";
 type DateType = { date: Date; week: string };
 
 type State = {
+  selectSchedule: ScheduleType[];
+  setSelectSchedule: React.Dispatch<React.SetStateAction<ScheduleType[]>>;
   currentDate: Date;
   setCurrentDate: React.Dispatch<React.SetStateAction<Date>>;
-  isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   selectedDate: DateType;
   setSelectedDate: React.Dispatch<React.SetStateAction<DateType>>;
   selectedTime: string;
   setSelectedTime: React.Dispatch<React.SetStateAction<string>>;
+  note: string;
+  setNote: React.Dispatch<React.SetStateAction<string>>;
   data: ScheduleType[];
   setData: React.Dispatch<React.SetStateAction<ScheduleType[]>>;
 };
@@ -25,26 +27,29 @@ export default function ScheduleProvider({
 }: {
   children: React.ReactNode;
 }) {
+  const [selectSchedule, setSelectSchedule] = useState<ScheduleType[]>([]);
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<DateType>({
     date: new Date(),
     week: "",
   });
   const [selectedTime, setSelectedTime] = useState(TIME_SLOTS[0]);
+  const [note, setNote] = useState("");
   const [data, setData] = useState<ScheduleType[]>([]);
 
   return (
     <ScheduleContext.Provider
       value={{
+        selectSchedule,
+        setSelectSchedule,
         currentDate,
         setCurrentDate,
-        isOpen,
-        setIsOpen,
         selectedDate,
         setSelectedDate,
         selectedTime,
         setSelectedTime,
+        note,
+        setNote,
         data,
         setData,
       }}

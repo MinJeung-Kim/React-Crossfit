@@ -5,6 +5,7 @@ import morgan from "morgan";
 import helmet from "helmet";
 
 import authRoter from "./router/auth.js";
+import scheduleRoter from "./router/schedule.js";
 import { config } from "./config.js";
 import { initSocket } from "./connection/socket.js";
 import { sequelize } from "./db/database.js";
@@ -23,6 +24,7 @@ app.use(cors(corsOptions));
 app.use(morgan("tiny"));
 
 app.use("/auth", authRoter);
+app.use("/schedules", scheduleRoter);
 
 app.use((req, res, next) => {
   res.sendStatus(404);

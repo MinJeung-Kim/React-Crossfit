@@ -1,6 +1,6 @@
 import { TIME_SLOTS } from "util/schedule";
 
-import styles from "./Schedule.module.css";
+import styles from "./TimeButtons.module.css";
 
 export default function TimeButtons({
   selectedTime,

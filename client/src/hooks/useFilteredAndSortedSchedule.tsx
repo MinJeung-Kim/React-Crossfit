@@ -12,21 +12,21 @@ export function useFilteredAndSortedSchedule(
   return useMemo(() => {
     return data
       .filter((item) =>
-        isWithinInterval(new Date(item.insDt), {
+        isWithinInterval(new Date(item.rezDate), {
           start: weekStart,
           end: weekEnd,
         })
       )
       .sort((a, b) => {
-        const dateA = new Date(a.insDt);
-        const dateB = new Date(b.insDt);
+        const dateA = new Date(a.rezDate);
+        const dateB = new Date(b.rezDate);
 
         if (dateA.getTime() !== dateB.getTime()) {
           return dateA.getTime() - dateB.getTime();
         }
 
-        const timeIndexA = TIME_SLOTS.indexOf(a.time);
-        const timeIndexB = TIME_SLOTS.indexOf(b.time);
+        const timeIndexA = TIME_SLOTS.indexOf(a.rezTime);
+        const timeIndexB = TIME_SLOTS.indexOf(b.rezTime);
         return timeIndexA - timeIndexB;
       });
   }, [data, weekStart, weekEnd]);

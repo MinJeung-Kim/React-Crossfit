@@ -1,10 +1,13 @@
 export type ScheduleType = {
   id: number;
-  time: string;
-  insDt: Date;
+  rezTime: string;
+  rezDate: string;
   week: string;
-  userName: string;
+  note: string;
+  name: string;
+  username: string;
 };
+
 interface HttpClient {
   fetch(url: string, options: any): Promise<any>;
 }
@@ -23,7 +26,7 @@ export default class ScheduleService {
     this.tokenStorage = tokenStorage;
   }
 
-  async getSchedules(username: string) {
+  async getSchedules(username?: string) {
     const query = username ? `?username=${username}` : "";
     return this.http.fetch(`/schedules${query}`, {
       method: "GET",
@@ -31,26 +34,49 @@ export default class ScheduleService {
     });
   }
 
-  async postSchedule(text: string) {
+  async postSchedule(
+    rezDate: Date,
+    rezTime: string,
+    week: string,
+    note: string
+  ) {
     return this.http.fetch(`/schedules`, {
       method: "POST",
       headers: this.getHeaders(),
-      body: JSON.stringify({ text, username: "ellie", name: "Ellie" }),
+      body: JSON.stringify({
+        rezDate,
+        rezTime,
+        week,
+        note,
+        username: "roxie",
+        name: "Roxie",
+      }),
     });
   }
 
-  async deleteSchedule(tweetId: string) {
-    return this.http.fetch(`/schedules/${tweetId}`, {
+  async deleteSchedule(scheduleId: string) {
+    return this.http.fetch(`/schedules/${scheduleId}`, {
       method: "DELETE",
       headers: this.getHeaders(),
     });
   }
 
-  async updateSchedule(tweetId: string, text: string) {
-    return this.http.fetch(`/schedules/${tweetId}`, {
+  async updateSchedule(
+    scheduleId: string,
+    rezDate: Date,
+    rezTime: string,
+    week: string,
+    note: string
+  ) {
+    return this.http.fetch(`/schedules/${scheduleId}`, {
       method: "PUT",
       headers: this.getHeaders(),
-      body: JSON.stringify({ text }),
+      body: JSON.stringify({
+        rezDate,
+        rezTime,
+        week,
+        note,
+      }),
     });
   }
 

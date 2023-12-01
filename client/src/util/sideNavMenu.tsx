@@ -1,12 +1,14 @@
-import { BsCollectionFill, BsCalendarCheckFill } from "react-icons/bs";
-import { RiDashboardFill } from "react-icons/ri";
-import { FaUser } from "react-icons/fa";
 
-export const menus = [
-  { name: "Dashboard", url: "/", icon: <RiDashboardFill /> },
+import UserFillIcon from "components/common/icons/UserFillIcon";
+import DashboardFilIcon from "components/common/icons/DashboardFilIcon";
+import CollectionFillIcon from "components/common/icons/CollectionFillIcon";
+import CalendarCheckFillIcon from "components/common/icons/CalendarIcon";
+
+export const MENUS = [
+  { name: "Dashboard", url: "/", icon: <DashboardFilIcon /> },
   {
     name: "Posts",
-    icon: <BsCollectionFill />,
+    icon: <CollectionFillIcon />,
     children: [
       { name: "Posts" },
       { name: "WOD", url: "/category" },
@@ -16,12 +18,12 @@ export const menus = [
   },
   {
     name: "Member",
-    icon: <FaUser />,
+    icon: <UserFillIcon />,
     children: [{ name: "Member" }, { name: "User", url: "/" }],
   },
   {
     name: "Reservation",
-    icon: <BsCalendarCheckFill />,
+    icon: <CalendarCheckFillIcon />,
     children: [
       { name: "Reservation" },
       { name: "Schedule", url: "/schedule" },

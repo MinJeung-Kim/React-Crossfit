@@ -1,0 +1,22 @@
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .content span > svg {
+    color: #5f7d9b;
+    padding-bottom: 0.3rem !important;
+  }
+  
+  .content textarea {
+    width: 100%;
+  }
+  
+  .top_wrapper {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+  }

@@ -3,24 +3,24 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-
-import NotFound from "./pages/NotFound";
-import Users from "./pages/Users/Users";
+import reportWebVitals from "./reportWebVitals"; 
+import Member from "pages/Member/Member";
+import NotFound from "./pages/NotFound"; 
 import Login from "./pages/Login/Login";
 import Scheduler from "pages/Schedule/Scheduler";
 import Dashboard from "./pages/Dashboard/Dashboard";
 
-import { AuthProvider, AuthErrorEventBus } from "./context/AuthContext";
 import { ModeProvider } from "./context/ModeContext";
+import { AuthProvider, AuthErrorEventBus } from "./context/AuthContext";
+
+import TokenStorage from "db/token";
+import Socket from "network/socket";
+import HttpClient from "network/http";
+import AuthService from "service/auth";
+import ScheduleService from "service/schedule";
 
 import "./index.css";
 import "./styles/App.global.css";
-import TokenStorage from "db/token";
-import HttpClient from "network/http";
-import AuthService from "service/auth";
-import Socket from "network/socket";
-import ScheduleService from "service/schedule";
 
 const baseURL = process.env.REACT_APP_BASE_URL ?? "";
 const tokenStorage = new TokenStorage();
@@ -28,7 +28,7 @@ const tokenStorage = new TokenStorage();
 const authErrorEventBus = new AuthErrorEventBus();
 const httpClient = new HttpClient(baseURL, authErrorEventBus);
 const authService = new AuthService(httpClient, tokenStorage);
-const scheduleService = new ScheduleService(httpClient, tokenStorage);
+export const scheduleService = new ScheduleService(httpClient, tokenStorage);
 // const socketClient = new Socket(baseURL, () => tokenStorage.getToken());
 const router = createBrowserRouter([
   {
@@ -44,8 +44,8 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Dashboard />,
-      },
-      { path: "/users", element: <Users /> },
+      }, 
+      { path: "/member", element: <Member /> },
       { path: "/schedule", element: <Scheduler /> },
     ],
   },

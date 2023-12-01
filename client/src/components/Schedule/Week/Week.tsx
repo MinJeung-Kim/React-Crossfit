@@ -17,13 +17,13 @@ import styles from "./Week.module.css";
 const renderItem = (key: string, items: ScheduleType[]) => {
   return (
     <div key={key} className={styles.content_wrapper}>
-      <p>{items[0].time}</p>
+      <p>{items[0].rezTime}</p>
       <div
         className={cn(styles.color_display, { [styles.green]: items.length >= 3 })} 
       />
       <div className={styles.user_names}>
         {items.map((item) => (
-          <p key={item.id}>{item.userName}</p>
+          <p key={item.id}>{item.username}</p>
         ))}
       </div>
     </div>
@@ -46,9 +46,9 @@ export default function Week() {
   const scheduleElements = Array.from(itemsMap.keys()).map((key) => {
     const items = itemsMap.get(key);
     if (!items) return null;
-    const isNewDate = !uniqueDates.has(String(items[0].insDt));
+    const isNewDate = !uniqueDates.has(String(items[0].rezDate));
     if (isNewDate) {
-      uniqueDates.add(String(items[0].insDt));
+      uniqueDates.add(String(items[0].rezDate));
     }
 
     return (
@@ -56,8 +56,8 @@ export default function Week() {
         {isNewDate && (
           <div className={styles.week_wrapper}>
             <p>{items[0].week}</p>
-            <p className={styles.insDt}>
-              {format(new Date(items[0].insDt), DATE_FORMAT)}
+            <p className={styles.createdAt}>
+              {format(new Date(items[0].rezDate), DATE_FORMAT)}
             </p>
           </div>
         )}

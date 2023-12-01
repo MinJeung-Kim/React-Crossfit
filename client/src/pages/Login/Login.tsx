@@ -1,14 +1,15 @@
 import { FormEvent, ChangeEvent, useState } from "react";
+import { useNavigate } from "react-router";
 
 import { useAuth } from "context/AuthContext";
 
 import LoginForm from "components/LoginForm/LoginForm";
 import LoginFooter from "components/LoginForm/LoginFooter";
 import SocialMedia from "components/LoginForm/SocialMedia";
+import ConfirmToast from "components/ConfirmToast/ConfirmToast";
+import TitleHeader from "components/common/TitleHeader/TitleHeader";
 
 import styles from "./Login.module.css";
-import ConfirmToast from "components/ConfirmToast/ConfirmToast";
-import { useNavigate } from "react-router";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -53,7 +54,8 @@ export default function Login() {
     <div className={styles.Login}>
       <div className={styles.container}>
         <div className={`${styles.form} ${styles.login}`}>
-          <p className={styles.title}>{isSignup ? "Registration" : "Login"}</p>
+          <TitleHeader title={isSignup ? "Registration" : "Login"}/>
+          {/* <p className={styles.title}>{isSignup ? "Registration" : "Login"}</p> */}
           <LoginForm
             isSignup={isSignup}
             loginInfo={loginInfo}

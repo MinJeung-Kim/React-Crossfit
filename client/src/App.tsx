@@ -2,8 +2,6 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 import Chat from "components/Chat/Chat";
-import SearchHeader from "./components/SearchHeader/SearchHeader";
-import SideNavigationBar from "./components/SideNavigationBar/SideNavigationBar";
 
 import Login from "./pages/Login/Login";
 
@@ -16,10 +14,12 @@ import "primereact/resources/primereact.css";
 import "primeflex/primeflex.css";
 
 import styles from "./App.module.css";
+import ScheduleProvider from "context/ScheduleContext";
+import SideBar from "components/SideBar/SideBar";
+import Header from "components/Header/Header";
 
 const App: React.FC = () => {
-  const { userInfo } = useAuth();
-  const [isActive, setIsActive] = useState(false);
+  const { userInfo } = useAuth(); 
 
   return (
     <main className={styles.root}>
@@ -27,11 +27,13 @@ const App: React.FC = () => {
         <Login />
       ) : (
         <LanguageProvider>
-          <SideNavigationBar isActive={isActive} />
+          <SideBar /> 
           <section className={styles.container}>
-            <SearchHeader isActive={isActive} setIsActive={setIsActive} />
-            <Outlet />
-            <Chat />
+            <Header /> 
+            <ScheduleProvider>
+              <Outlet />
+            </ScheduleProvider>
+            {/* <Chat /> */}
           </section>
         </LanguageProvider>
       )}

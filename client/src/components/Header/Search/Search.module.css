@@ -1,0 +1,25 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.wrapper > svg {
+  position: absolute;
+  width: 0.85rem;
+  left: 5px;
+  z-index: 99;
+  color: var(--color-base);
+}
+.wrapper > input {
+  width: 9rem;
+  position: relative;
+  background: transparent;
+  padding: 0.3rem 0.3rem 0.3rem 1.85rem;
+  text-indent: 5px;
+}
+.wrapper > input::placeholder {
+  text-align: left;
+  text-indent: 5px;
+  font-size: 0.75rem;
+  color: var(--color-base);
+}

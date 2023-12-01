@@ -1,0 +1,31 @@
+.dark_light {
+  height: 40px;
+  width: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.dark_light svg {
+  position: absolute;
+  color: var(--color-base);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 1.2rem;
+}
+
+.dark_light svg:nth-child(2) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.active  svg:nth-child(2){
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.active  svg:nth-child(1){
+  opacity: 0;
+  pointer-events: none;
+}

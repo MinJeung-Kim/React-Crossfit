@@ -1,0 +1,23 @@
+.wrapper {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sub_menus {
+  width: 100%;
+  max-width: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.sub_menus li a {
+  font-size: 0.75rem;
+  color: var(--color-base-accent);
+  font-weight: 500;
+  cursor: pointer;
+}
+.sub_menus li:hover a {
+  color: var(--color-accent);
+  font-weight: 600;
+}

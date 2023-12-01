@@ -22,12 +22,13 @@ export async function signup(req, res) {
   });
 
   const token = createJwtToken(userId);
-  // res.status(201).json({ token, username });
-  res.status(201).json({ message: `created user ${username}` });
+  res
+    .status(201)
+    .json({ token, username, message: `created user ${username}` });
 }
 
 export async function login(req, res) {
-  const { username, password, name } = req.body;
+  const { username, password, email, name } = req.body;
   const user = await userRepository.findByUsername(username);
   if (!user) {
     return res.status(401).json({ message: "Invalid user or password" });
@@ -38,7 +39,7 @@ export async function login(req, res) {
   }
 
   const token = createJwtToken(user.id);
-  res.status(200).json({ token, username, name });
+  res.status(200).json({ token, username, email, name });
 }
 
 function createJwtToken(id) {
@@ -54,6 +55,7 @@ export async function me(req, res) {
   }
   // res
   //   .status(200)
-  //   .json({ token: req.token, username: user.username, name: user.name });
-  res.status(200).json({ username: user.username, name: user.name });
+  res
+    .status(200)
+    .json({ token: req.token, username: user.username, name: user.name });
 }

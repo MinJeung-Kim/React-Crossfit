@@ -1,0 +1,45 @@
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .buttons > svg {
+    width: 2.3rem;
+    height: 2.3rem;
+    padding: 0.5rem;
+    color: var(--color-text);
+    border-radius: var(--content-button-radius);
+    border: 2px solid #d7d7df;
+    /* background: var(--color-accent); */
+    cursor: pointer;
+  }
+  .buttons > svg:hover {
+    background: #f1f1f6;
+    color: #646471;
+  }
+  
+  .unit {
+    gap: 0rem !important;
+  }
+  .unit > button:nth-child(1) {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-right-width: 0;
+  }
+  .unit > button:nth-child(2) {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+  
+  .unit {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }

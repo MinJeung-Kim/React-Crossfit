@@ -1,16 +1,13 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import useValid from "hooks/useValid";
 
-import { FiLock } from "react-icons/fi";
-import { HiOutlineMail } from "react-icons/hi";
-import {
-  PiEyeClosedBold,
-  PiEyeBold,
-  PiUserFocusBold,
-  PiPhoneBold,
-  PiUserBold,
-} from "react-icons/pi";
-
+import LockIcon from "components/common/icons/LockIcon";
+import UserIcon from "components/common/icons/UserIcon";
+import EyeIcon from "components/common/icons/EyeIcon";
+import MailIcon from "components/common/icons/MailIcon";
+import PhoneIcon from "components/common/icons/PhoneIcon";
+import UserFocusIcon from "components/common/icons/UserFocusIcon";
+import EyeClosedIcon from "components/common/icons/EyeClosedIcon";
 import LoadDataButton from "components/common/Buttons/LoadDataButton";
 
 import styles from "./LoginForm.module.css";
@@ -35,7 +32,7 @@ export default function LoginForm({
   return (
     <form className={styles.input_form} onSubmit={onSubmit}>
       <div className={styles.input_field}>
-        <PiUserBold className={styles.icon} />
+        <UserIcon />
         <input
           name="username"
           type="text"
@@ -48,7 +45,7 @@ export default function LoginForm({
       </div>
 
       <div className={styles.input_field}>
-        <FiLock className={styles.icon} />
+        <LockIcon />
         <input
           name="password"
           type={isShowPw ? "text" : "password"}
@@ -59,22 +56,16 @@ export default function LoginForm({
           required
         />
         {isShowPw ? (
-          <PiEyeBold
-            className={styles.showHidePw}
-            onClick={() => setIsShowPw(false)}
-          />
+          <EyeIcon onClick={() => setIsShowPw(false)} />
         ) : (
-          <PiEyeClosedBold
-            className={styles.showHidePw}
-            onClick={() => setIsShowPw(true)}
-          />
+          <EyeClosedIcon onClick={() => setIsShowPw(true)} />
         )}
       </div>
 
       {isSignup && (
         <>
           <div className={styles.input_field}>
-            <PiUserFocusBold className={styles.icon} />
+            <UserFocusIcon />
             <input
               name="name"
               type="text"
@@ -86,7 +77,7 @@ export default function LoginForm({
             />
           </div>
           <div className={styles.input_field}>
-            <HiOutlineMail className={styles.icon} />
+            <MailIcon />
             <input
               name="email"
               type="text"
@@ -98,7 +89,7 @@ export default function LoginForm({
             />
           </div>
           <div className={styles.input_field}>
-            <PiPhoneBold className={styles.icon} />
+            <PhoneIcon />
             <input
               name="phone"
               type="text"

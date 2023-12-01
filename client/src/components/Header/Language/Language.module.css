@@ -1,0 +1,64 @@
+.language_wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.language_wrap > svg {
+  position: absolute;
+  width: 0.85rem;
+  top: 0;
+  left: 5px;
+  z-index: 99;
+  color: var(--color-base);
+}
+.select_wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.75rem;
+  color: var(--color-base-accent);
+}
+.button_wrap {
+  position: relative;
+  display: flex;
+}
+.button_wrap > svg {
+  width: 0.75rem;
+  color: var(--color-base);
+}
+.select {
+  position: relative;
+  width: 3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: transparent;
+  padding: 0.3rem 0.3rem 0.3rem 1.5rem;
+}
+.countrys {
+  display: none;
+  width: 100%;
+  min-width: 3rem;
+  position: absolute;
+  top: 30px;
+  z-index: 9;
+  flex-direction: column;
+  background: #fff;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 5px;
+  transition: 0.6s;
+}
+.countrys.action {
+  display: flex;
+}
+.countrys li {
+  cursor: pointer;
+  padding: 0.5rem 0.8rem;
+  width: 100%;
+}
+
+.countrys li:hover {
+  color: var(--color-accent);
+  font-weight: 600;
+}

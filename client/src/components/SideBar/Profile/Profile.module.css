@@ -1,0 +1,39 @@
+.profile {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.profile_img {
+  width: 5rem;
+  border: 2px solid var(--color-accent);
+  border-radius: 50%;
+  padding: 0.2rem;
+}
+.user_menu {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user_menu svg {
+  color: var(--color-base);
+  width: 1.2rem;
+  cursor: pointer;
+}
+
+.user_menu svg:hover {
+  color: var(--color-accent);
+}
+
+.username {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #707689;
+}
+.email {
+  font-size: 0.75rem;
+  color: #808697;
+}

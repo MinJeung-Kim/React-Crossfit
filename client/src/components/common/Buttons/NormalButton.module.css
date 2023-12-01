@@ -1,12 +1,13 @@
 .button {
-  color: #fff;
+  color: var(--color-base-accent);
   padding: 0.8rem;
-  border-radius: 4px;
-  background: var(--color-disabled);
+  border-radius: var(--content-button-radius);
+  border: 2px solid var(--color-border);
   cursor: pointer;
   font-size: 0.85rem;
 }
 
 .action {
-  background: var(--color-accent);
+  font-weight: 600;
+  background: #f1f1f6;
 }
