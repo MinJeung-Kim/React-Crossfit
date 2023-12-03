@@ -40,7 +40,7 @@
 
 .footer a > svg,
 .text_box > svg {
-  width: 1rem;
+  width: 0.8rem;
   color: var(--color-base);
 }
 
@@ -51,7 +51,7 @@
 }
 
 .text {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--color-base);
   cursor: pointer;
 }

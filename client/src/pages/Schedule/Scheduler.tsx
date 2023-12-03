@@ -4,10 +4,10 @@ import { Splitter, SplitterPanel } from "primereact/splitter";
 import { scheduleService } from "index"; 
 import { useScheduleContext } from "context/ScheduleContext";
 
-import ScheduleHeader from "components/Schedule/Header/ScheduleHeader";
 import Week from "components/Schedule/Week/Week";
 import List from "components/Schedule/List/List";
 import Month from "components/Schedule/Month/Month";
+import ScheduleHeader from "components/Schedule/Header/ScheduleHeader";
 
 import styles from "./Scheduler.module.css";
 

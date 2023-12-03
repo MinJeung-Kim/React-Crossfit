@@ -5,6 +5,7 @@ import morgan from "morgan";
 import helmet from "helmet";
 
 import authRoter from "./router/auth.js";
+import memberRoter from "./router/member.js";
 import scheduleRoter from "./router/schedule.js";
 import { config } from "./config.js";
 import { initSocket } from "./connection/socket.js";
@@ -25,6 +26,7 @@ app.use(morgan("tiny"));
 
 app.use("/auth", authRoter);
 app.use("/schedules", scheduleRoter);
+app.use("/members", memberRoter);
 
 app.use((req, res, next) => {
   res.sendStatus(404);

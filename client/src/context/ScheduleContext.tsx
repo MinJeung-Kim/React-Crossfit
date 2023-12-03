@@ -14,8 +14,8 @@ type State = {
   setSelectedDate: React.Dispatch<React.SetStateAction<DateType>>;
   selectedTime: string;
   setSelectedTime: React.Dispatch<React.SetStateAction<string>>;
-  note: string;
-  setNote: React.Dispatch<React.SetStateAction<string>>;
+  desc: string;
+  setDesc: React.Dispatch<React.SetStateAction<string>>;
   data: ScheduleType[];
   setData: React.Dispatch<React.SetStateAction<ScheduleType[]>>;
 };
@@ -34,7 +34,7 @@ export default function ScheduleProvider({
     week: "",
   });
   const [selectedTime, setSelectedTime] = useState(TIME_SLOTS[0]);
-  const [note, setNote] = useState("");
+  const [desc, setDesc] = useState("");
   const [data, setData] = useState<ScheduleType[]>([]);
 
   return (
@@ -48,8 +48,8 @@ export default function ScheduleProvider({
         setSelectedDate,
         selectedTime,
         setSelectedTime,
-        note,
-        setNote,
+        desc,
+        setDesc,
         data,
         setData,
       }}

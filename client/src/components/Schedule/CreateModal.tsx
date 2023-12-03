@@ -27,8 +27,8 @@ export default function CreateModal({ isOpen, setIsOpen }: Props) {
     setSelectedDate,
     selectedTime,
     setSelectedTime,
-    note,
-    setNote,
+    desc,
+    setDesc,
     data,
     setData,
   } = useScheduleContext();
@@ -45,7 +45,7 @@ export default function CreateModal({ isOpen, setIsOpen }: Props) {
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = e.target;
-    setNote(value);
+    setDesc(value);
   };
 
   const onError = (error: any) => {
@@ -79,7 +79,7 @@ export default function CreateModal({ isOpen, setIsOpen }: Props) {
     if (week && !checkIsSunday(selectedDate.date)) { 
       setSelectedDate({ date: selectedDate.date, week });
       scheduleService
-        .postSchedule(selectedDate.date, selectedTime, week, note)
+        .postSchedule(selectedDate.date, selectedTime, week, desc)
         .then((created) => {
           setData([...created]);
           setIsOpen(false);
@@ -122,9 +122,9 @@ export default function CreateModal({ isOpen, setIsOpen }: Props) {
           setSelectedTime={setSelectedTime}
         />
         <InputTextarea
-          id="note"
+          id="desc"
           placeholder="✏️Add Notes"
-          value={note}
+          value={desc}
           onChange={handleChange}
           rows={5}
           cols={30}

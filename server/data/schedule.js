@@ -16,15 +16,15 @@ const Schedule = sequelize.define("schedule", {
     type: DataTypes.DATEONLY,
     allowNull: false,
   },
-  rezTime: { 
+  rezTime: {
     type: DataTypes.TEXT,
     allowNull: false,
-  }, 
+  },
   week: {
     type: DataTypes.TEXT,
     allowNull: false,
   },
-  note: {
+  desc: {
     type: DataTypes.TEXT,
   },
 });
@@ -36,13 +36,11 @@ const INCLUDE_USER = {
     "rezDate",
     "rezTime",
     "week",
-    "note",
+    "desc",
     "createdAt",
     "userId",
     [Sequelize.col("user.name"), "name"],
-    [Sequelize.col("user.username"), "username"],
-    // [Sequelize.col("user.email"), "email"],
-    // [Sequelize.col("user.phone"), "phone"],
+    [Sequelize.col("user.username"), "username"], 
   ],
   include: {
     model: User,
@@ -74,21 +72,19 @@ export async function getById(id) {
   });
 }
 
-export async function create(rezDate, rezTime, week, note, userId) {
-  
-  console.log('createSchedule : ',rezDate, rezTime, week, note );
-  return Schedule.create({ rezDate, rezTime, week, note, userId }).then(
+export async function create(rezDate, rezTime, week, desc, userId) {
+  return Schedule.create({ rezDate, rezTime, week, desc, userId }).then(
     (data) => this.getById(data.dataValues.id)
   );
 }
 
-export async function update(id, rezDate, rezTime, week, note) {
+export async function update(id, rezDate, rezTime, week, desc) {
   return Schedule.findByPk(id, INCLUDE_USER).then((schedule) => {
     schedule.rezDate = rezDate;
     schedule.rezTime = rezTime;
     schedule.week = week;
-    schedule.note = note;
-    return schedule.save(); // 업데이트된 schedule 리턴.
+    schedule.desc = desc;
+    return schedule.save(); 
   });
 }
 

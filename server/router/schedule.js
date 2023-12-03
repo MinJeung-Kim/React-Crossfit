@@ -29,7 +29,7 @@ const validateSchedule = [
       "Saturday",
     ])
     .withMessage("week must be a valid day of the week"),
-  body("note")
+  body("desc")
     .optional({ checkFalsy: true }) // 빈 문자열과 null을 허용
     .isLength({ min: 3 })
     .withMessage("desc should be at least 3 characters when provided"),
@@ -42,8 +42,8 @@ const validateSchedule = [
   //   .trim()
   //   .isLength({ min: 3 })
   //   .withMessage("week should be at least 3 characters"),
-  // body("note")
-  //   .withMessage("invalid note")
+  // body("desc")
+  //   .withMessage("invalid desc")
   //   .optional({ nullable: true, checkFalsy: true }),
   validate,
 ];
