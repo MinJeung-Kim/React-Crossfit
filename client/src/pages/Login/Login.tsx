@@ -13,7 +13,7 @@ import styles from "./Login.module.css";
 
 export default function Login() {
   const navigate = useNavigate();
-  const { signUp, logIn } = useAuth();
+  const { authMsg, setAuthMsg,signUp, logIn } = useAuth();
   const [isSignup, setIsSignup] = useState(false);
   const [loginInfo, setLoginInfo] = useState({
     username: "",
@@ -22,7 +22,6 @@ export default function Login() {
     email: "",
     phone: "",
   });
-  const [text, setText] = useState("");
   const [isAlert, setIsAlert] = useState(false);
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -41,7 +40,7 @@ export default function Login() {
   };
 
   const setError = (error: any) => {
-    setText(error.toString());
+    setAuthMsg(error.toString());
     setIsAlert(true);
   };
 
@@ -54,8 +53,7 @@ export default function Login() {
     <div className={styles.Login}>
       <div className={styles.container}>
         <div className={`${styles.form} ${styles.login}`}>
-          <TitleHeader title={isSignup ? "Registration" : "Login"}/>
-          {/* <p className={styles.title}>{isSignup ? "Registration" : "Login"}</p> */}
+          <TitleHeader title={isSignup ? "Registration" : "Login"} />
           <LoginForm
             isSignup={isSignup}
             loginInfo={loginInfo}
@@ -73,7 +71,7 @@ export default function Login() {
         </div>
       </div>
 
-      {isAlert && <ConfirmToast message={text} />}
+      {isAlert && <ConfirmToast messageStatus={authMsg} />}
     </div>
   );
 }

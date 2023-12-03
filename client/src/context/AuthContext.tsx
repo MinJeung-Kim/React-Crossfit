@@ -8,8 +8,14 @@ import {
 import AuthService from "service/auth";
 
 export type User = { [key: string]: string } | undefined;
+export type authMsg = {
+  status: "warn" | "info";
+  message: string;
+};
 
 type State = {
+  authMsg: authMsg;
+  setAuthMsg: React.Dispatch<React.SetStateAction<authMsg>>;
   userInfo: User;
   setUserInfo: React.Dispatch<React.SetStateAction<User>>;
   logout: () => void;
@@ -39,6 +45,10 @@ export function AuthProvider({
   authErrorEventBus: AuthErrorEventBus;
   children: React.ReactNode;
 }) {
+  const [authMsg, setAuthMsg] = useState<authMsg>({
+    status: "warn",
+    message: "",
+  });
   const [userInfo, setUserInfo] = useState<User>(undefined);
 
   useEffect(() => {
@@ -64,7 +74,14 @@ export function AuthProvider({
     ): Promise<void> =>
       authService
         .signup(username, password, name, email, phone)
-        .then((user) => setUserInfo({ ...user })),
+        .then((user) => {
+          setAuthMsg({
+            ...authMsg,
+            status: "info",
+            message: user.message ?? "",
+          });
+          setUserInfo({ ...user });
+        }),
     [authService]
   );
 
@@ -72,7 +89,8 @@ export function AuthProvider({
     async (username: string, password: string): Promise<void> =>
       authService
         .login(username, password)
-        .then((user) => setUserInfo({ ...user })),
+        .then((user) => {console.log(user);
+         setUserInfo({ ...user })}),
     [authService]
   );
 
@@ -87,6 +105,8 @@ export function AuthProvider({
   return (
     <AuthContext.Provider
       value={{
+        authMsg,
+        setAuthMsg,
         userInfo,
         setUserInfo,
         logout,

@@ -1,5 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
-import useValid from "hooks/useValid";
+import { ChangeEvent, FormEvent, useState } from "react"; 
 
 import LockIcon from "components/common/icons/LockIcon";
 import UserIcon from "components/common/icons/UserIcon";
@@ -24,8 +23,7 @@ export default function LoginForm({
   onSubmit,
   loginInfo,
   onChange,
-}: Props) {
-  const { handleBlur } = useValid();
+}: Props) { 
   const [isShowPw, setIsShowPw] = useState(false);
   const { username, password, name, email, phone } = loginInfo;
 

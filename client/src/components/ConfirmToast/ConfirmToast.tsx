@@ -1,12 +1,14 @@
 import { useEffect, useRef } from "react";
 import { Toast } from "primereact/toast";
+import { authMsg } from "context/AuthContext";
 
 type Props = {
-  message: string;
+  messageStatus: authMsg;
 };
 
-export default function ConfirmToast({ message }: Props) {
+export default function ConfirmToast({ messageStatus }: Props) {
   const toast = useRef<Toast>(null);
+  const { status, message } = messageStatus;
 
   useEffect(() => {
     accept();
@@ -14,11 +16,11 @@ export default function ConfirmToast({ message }: Props) {
 
   const accept = () => {
     toast.current?.show({
-      severity: "warn",
+      severity: `${status}`,
       summary: "Confirmed",
       detail: `${message}`,
       life: 3000,
     });
   };
-  return <Toast ref={toast} position="bottom-right"/>;
+  return <Toast ref={toast} position="bottom-right" />;
 }

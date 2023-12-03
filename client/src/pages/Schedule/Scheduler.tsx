@@ -42,7 +42,7 @@ export default function Scheduler() {
               <Month />
             </div>
           </SplitterPanel>
-          <SplitterPanel size={50} minSize={10} style={{ overflow: "hidden" }}>
+          <SplitterPanel size={20} minSize={10} style={{ overflow: "hidden" }}>
             <List />
           </SplitterPanel>
         </Splitter>

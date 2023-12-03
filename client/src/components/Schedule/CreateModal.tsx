@@ -4,8 +4,8 @@ import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Calendar, CalendarChangeParams } from "primereact/calendar";
 
-import { TODAY, setWeek } from "util/schedule";
 import { scheduleService } from "index";
+import { TODAY, setWeek } from "util/schedule";
 import { ScheduleType } from "service/schedule";
 import { useAuth } from "context/AuthContext";
 import { useScheduleContext } from "context/ScheduleContext";
@@ -76,7 +76,7 @@ export default function CreateModal({ isOpen, setIsOpen }: Props) {
     // const dayName = Object.keys(WEEKS).find((key) => WEEKS[key] === dayOfWeek);
     const week = setWeek(new Date(selectedDate.date));
 
-    if (week && !checkIsSunday(selectedDate.date)) {
+    if (week && !checkIsSunday(selectedDate.date)) { 
       setSelectedDate({ date: selectedDate.date, week });
       scheduleService
         .postSchedule(selectedDate.date, selectedTime, week, note)
