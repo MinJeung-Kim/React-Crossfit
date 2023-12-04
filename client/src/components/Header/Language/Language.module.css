@@ -35,6 +35,7 @@
   white-space: nowrap;
   background: transparent;
   padding: 0.3rem 0.3rem 0.3rem 1.5rem;
+  cursor: pointer;
 }
 .countrys {
   display: none;
