@@ -4,6 +4,12 @@
   flex-direction: column;
 }
 
+.singnup {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
 .input_field {
   position: relative;
   height: 50px;
@@ -12,40 +18,10 @@
 }
 
 .input_field input {
-  position: absolute;
   height: 100%;
   width: 100%;
   padding: 0 35px;
   font-size: 16px;
-  border-bottom: 2px solid #ccc;
-  border-top: 2px solid transparent;
-  transition: all 0.2s ease;
-}
-
-.input_field input:is(:focus, :valid) {
-  border-bottom-color: #4070f4;
-}
-
-/* .input_field input:is(:focus, :valid) ~ i {
-  color: #4070f4;
-} */
-
-.input_field > svg {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #999;
-  font-size: 23px;
-  z-index: 99;
-}
-
-.input_field > svg:nth-child(1) {
-  left: 0;
-}
-
-.input_field > svg:nth-child(3) {
-  right: 0;
-  cursor: pointer;
 }
 
 .checkbox_text {
@@ -75,4 +51,17 @@
   color: #4070f4;
   cursor: pointer;
   text-decoration: underline;
+}
+.radio_wrap{
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.label {
+  font-size: 0.85rem;
 }

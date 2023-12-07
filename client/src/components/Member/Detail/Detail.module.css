@@ -1,0 +1,42 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.header {
+  padding: 1rem 2.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.3rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.user_img {
+  width: 6rem;
+  border: 2px solid #92ace9;
+  border-radius: 50%;
+}
+.user_info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.3rem;
+}
+.info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.info > svg {
+  width: 1.2rem;
+  color: var(--color-base);
+}
+.text {
+  font-size: 0.8rem;
+  color: var(--color-base);
+}

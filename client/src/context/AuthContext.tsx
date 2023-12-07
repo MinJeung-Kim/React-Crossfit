@@ -24,7 +24,8 @@ type State = {
     password: string,
     name: string,
     email: string,
-    phone: string
+    phone: string,
+    gender: "M" | "F"
   ) => Promise<void>;
   logIn: (username: string, password: string) => Promise<void>;
 };

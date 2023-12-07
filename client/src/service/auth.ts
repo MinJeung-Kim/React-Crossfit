@@ -16,11 +16,21 @@ interface AuthResponse extends ApiResponse {
   token: string;
 }
 
-interface UserResponse extends ApiResponse {
+export interface UserResponse extends ApiResponse {
   username: string;
+  password: string;
   name: string;
   email: string;
   phone: string;
+  gender: "M" | "F";
+  birthDay: string;
+  membership: "1" | "3";
+  lockerYn: "Y" | "N";
+  locker: "1" | "3";
+  price: number;
+  startDate: string;
+  endDate: string;
+  userAgmtYn: "Y";
 }
 
 export default class AuthService {

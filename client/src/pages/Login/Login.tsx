@@ -1,6 +1,7 @@
 import { FormEvent, ChangeEvent, useState } from "react";
 import { useNavigate } from "react-router";
 
+import { UserResponse } from "service/auth";
 import { useAuth } from "context/AuthContext";
 
 import LoginForm from "components/LoginForm/LoginForm";
@@ -13,23 +14,32 @@ import styles from "./Login.module.css";
 
 export default function Login() {
   const navigate = useNavigate();
-  const { authMsg, setAuthMsg,signUp, logIn } = useAuth();
+  const { authMsg, setAuthMsg, signUp, logIn } = useAuth();
   const [isSignup, setIsSignup] = useState(false);
-  const [loginInfo, setLoginInfo] = useState({
+  const [user, setUser] = useState<UserResponse>({
     username: "",
     password: "",
     name: "",
     email: "",
     phone: "",
+    gender: "M",
+    birthDay: "",
+    membership: "1",
+    lockerYn: "Y",
+    locker: "1",
+    price: 0,
+    startDate: "",
+    endDate: "",
+    userAgmtYn: "Y",
   });
   const [isAlert, setIsAlert] = useState(false);
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const { username, password, name, email, phone } = loginInfo;
+    const { username, password, name, email, phone, gender } = user;
 
     if (isSignup) {
-      signUp(username, password, name, email, phone)
+      signUp(username, password, name, email, phone, gender)
         .then(() => setIsSignup(false))
         .catch(setError);
     } else {
@@ -46,7 +56,7 @@ export default function Login() {
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setLoginInfo({ ...loginInfo, [name]: value });
+    setUser({ ...user, [name]: value });
   };
 
   return (
@@ -56,7 +66,7 @@ export default function Login() {
           <TitleHeader title={isSignup ? "Registration" : "Login"} />
           <LoginForm
             isSignup={isSignup}
-            loginInfo={loginInfo}
+            user={user}
             onSubmit={onSubmit}
             onChange={onChange}
           />
