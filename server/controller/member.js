@@ -20,8 +20,10 @@ export async function getMember(req, res, next) {
 }
 
 export async function createMember(req, res, next) {
-  const { paymentTerm, extendedPeriod, totalPeriod, locker, desc } = req.body;
+  const { joinDate, paymentTerm, extendedPeriod, totalPeriod, locker, desc } =
+    req.body;
   const member = await memberRepository.create(
+    joinDate,
     paymentTerm,
     extendedPeriod,
     totalPeriod,
@@ -34,9 +36,11 @@ export async function createMember(req, res, next) {
 
 export async function updateMember(req, res, next) {
   const id = req.params.id;
-  const rezDate = req.body.rezDate;
-  const rezTime = req.body.rezTime;
-  const week = req.body.week;
+  const joinDate = req.body.joinDate;
+  const paymentTerm = req.body.paymentTerm;
+  const extendedPeriod = req.body.extendedPeriod;
+  const totalPeriod = req.body.totalPeriod;
+  const locker = req.body.locker;
   const desc = req.body.desc;
   const member = await memberRepository.getById(id);
   if (!member) {
@@ -47,9 +51,11 @@ export async function updateMember(req, res, next) {
   }
   const updated = await memberRepository.update(
     id,
-    rezDate,
-    rezTime,
-    week,
+    joinDate,
+    paymentTerm,
+    extendedPeriod,
+    totalPeriod,
+    locker,
     desc
   );
   res.status(200).json(updated);

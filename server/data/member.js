@@ -12,6 +12,11 @@ const Member = sequelize.define("member", {
     allowNull: false,
     primaryKey: true,
   },
+  joinDate: {
+    // 계약일
+    type: DataTypes.DATEONLY,
+    allowNull: false,
+  },
   paymentTerm: {
     // 계약 기간
     type: DataTypes.INTEGER,
@@ -40,6 +45,7 @@ Member.belongsTo(User);
 const INCLUDE_USER = {
   attributes: [
     "id",
+    "joinDate",
     "paymentTerm",
     "extendedPeriod",
     "totalPeriod",
@@ -83,6 +89,7 @@ export async function getById(id) {
 }
 
 export async function create(
+  joinDate,
   paymentTerm,
   extendedPeriod,
   totalPeriod,
@@ -91,6 +98,7 @@ export async function create(
   userId
 ) {
   return Member.create({
+    joinDate,
     paymentTerm,
     extendedPeriod,
     totalPeriod,
@@ -100,11 +108,21 @@ export async function create(
   }).then((data) => this.getById(data.dataValues.id));
 }
 
-export async function update(id, rezDate, rezTime, week, desc) {
+export async function update(
+  id,
+  joinDate,
+  paymentTerm,
+  extendedPeriod,
+  totalPeriod,
+  locker,
+  desc
+) {
   return Member.findByPk(id, INCLUDE_USER).then((member) => {
-    member.rezDate = rezDate;
-    member.rezTime = rezTime;
-    member.week = week;
+    member.joinDate = joinDate;
+    member.paymentTerm = paymentTerm;
+    member.extendedPeriod = extendedPeriod;
+    member.totalPeriod = totalPeriod;
+    member.locker = locker;
     member.desc = desc;
     return member.save();
   });

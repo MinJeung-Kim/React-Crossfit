@@ -5,7 +5,22 @@ import * as userRepository from "../data/auth.js";
 import { config } from "../config.js";
 
 export async function signup(req, res) {
-  const { username, password, name, email, phone } = req.body;
+  const {
+    username,
+    password,
+    name,
+    email,
+    phone,
+    gender,
+    birthDay,
+    membership,
+    lockerYn,
+    locker,
+    price,
+    startDate,
+    endDate,
+    userAgmtYn,
+  } = req.body;
   const found = await userRepository.findByUsername(username);
 
   if (found) {
@@ -19,6 +34,15 @@ export async function signup(req, res) {
     name,
     email,
     phone,
+    gender,
+    birthDay,
+    membership,
+    lockerYn,
+    locker,
+    price,
+    startDate,
+    endDate,
+    userAgmtYn,
   });
 
   const token = createJwtToken(userId);
@@ -29,6 +53,7 @@ export async function signup(req, res) {
 
 export async function login(req, res) {
   const { username, password } = req.body;
+  console.log("login : ", req.body);
   const user = await userRepository.findByUsername(username);
   if (!user) {
     return res.status(401).json({ message: "Invalid user or password" });
@@ -56,7 +81,5 @@ export async function me(req, res) {
   res.status(200).json({
     token: req.token,
     username: user.username,
-    name: user.name,
-    email: user.email,
   });
 }

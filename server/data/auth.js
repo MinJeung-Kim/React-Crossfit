@@ -32,7 +32,45 @@ export const User = sequelize.define(
       type: DataTypes.STRING(128),
       allowNull: false,
     },
-  },
+    gender: {
+      type: DataTypes.ENUM,
+      values: ["M", "F"],
+      allowNull: false,
+    },
+    birthDay: {
+      type: DataTypes.STRING(128),
+    },
+    membership: {
+      type: DataTypes.ENUM,
+      values: ["1", "3"],
+      allowNull: false,
+    },
+    lockerYn: {
+      type: DataTypes.ENUM,
+      values: ["Y", "N"],
+      allowNull: false,
+    },
+    locker: {
+      type: DataTypes.ENUM,
+      values: ["1", "3"],
+    },
+    price: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    startDate: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+    },
+    endDate: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+    },
+    userAgmtYn: {
+      type: DataTypes.ENUM("Y"), 
+      allowNull: false,
+    },
+  }
   // { timestamps: false }
 );
 
