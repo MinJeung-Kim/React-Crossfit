@@ -14,6 +14,8 @@ import RadioButton from "components/common/RadioButton/RadioButton";
 import LoadDataButton from "components/common/Buttons/LoadDataButton";
 
 import styles from "./LoginForm.module.css";
+import Select from "components/common/Select/Select";
+import BirthdayIcon from "components/common/icons/BirthdayIcon";
 
 type Props = {
   isSignup: boolean;
@@ -29,7 +31,7 @@ export default function LoginForm({
   onChange,
 }: Props) {
   const [isShowPw, setIsShowPw] = useState(false);
-  const { username, password, name, email, phone, gender } = user;
+  const { username, password, name, email, phone, gender, birthDay } = user;
 
   return (
     <form className={styles.input_form} onSubmit={onSubmit}>
@@ -81,11 +83,31 @@ export default function LoginForm({
             onChange={onChange}
           />
           <div className={styles.radio_wrap}>
-            <RadioButton name="gender" value="M" label="여자" checked={gender === "M"} 
-            onChange={onChange}/>
-            <RadioButton name="gender" value="F" label="남자"  checked={gender === "F"}
-            onChange={onChange}/>
+            <RadioButton
+              name="gender"
+              value="M"
+              label="여자"
+              checked={gender === "M"}
+              onChange={onChange}
+            />
+            <RadioButton
+              name="gender"
+              value="F"
+              label="남자"
+              checked={gender === "F"}
+              onChange={onChange}
+            />
           </div>
+          <LoginInput
+            icon={<BirthdayIcon />}
+            name="birthDay"
+            type="date"
+            placeholder="BirthDay"
+            value={birthDay}
+            onChange={onChange}
+            required={false}
+            max="9999-12-31"
+          />
         </div>
       )}
 

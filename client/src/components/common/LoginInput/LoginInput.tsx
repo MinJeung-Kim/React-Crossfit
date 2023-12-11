@@ -10,6 +10,7 @@ type Props = {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
   sideIcon?: ReactNode;
+  max?:string;
 };
 
 export default function LoginInput({
@@ -20,7 +21,7 @@ export default function LoginInput({
   value,
   onChange,
   required = true,
-  sideIcon,
+  sideIcon,max
 }: Props) {
   return (
     <div className={styles.input_field}>
@@ -32,6 +33,7 @@ export default function LoginInput({
         value={value}
         onChange={onChange}
         required={required}
+        max={max}
       />
     {sideIcon}
     </div>

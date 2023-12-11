@@ -77,7 +77,7 @@ export default function Login() {
             isSignup={isSignup}
             setIsSignup={setIsSignup}
           />
-          <SocialMedia />
+         {!isSignup && <SocialMedia />}
         </div>
       </div>
 
