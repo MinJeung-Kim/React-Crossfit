@@ -12,7 +12,7 @@ type Props = {
 };
 
 export default function Detail({ member }: Props) {
-  console.log(member);
+  console.log('Detail : ',member);
 
   const {
     username,
