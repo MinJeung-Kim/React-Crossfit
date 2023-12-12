@@ -59,11 +59,11 @@ export const User = sequelize.define(
       allowNull: false,
     },
     startDate: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     endDate: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     userAgmtYn: {

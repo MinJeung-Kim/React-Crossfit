@@ -44,7 +44,7 @@ export default class AuthService {
     const data = await this.http.fetch("/auth/signup", {
       method: "POST",
       body: JSON.stringify({
-        user,
+        ...user,
       }),
     });
 

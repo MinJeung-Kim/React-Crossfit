@@ -1,8 +1,10 @@
 import { FormEvent, ChangeEvent, useState } from "react";
 import { useNavigate } from "react-router";
+import { format } from "date-fns";
 
 import { UserResponse } from "service/auth";
 import { useAuth } from "context/AuthContext";
+import { DATE_FORMAT, TODAY } from "util/schedule";
 
 import LoginForm from "components/LoginForm/LoginForm";
 import LoginFooter from "components/LoginForm/LoginFooter";
@@ -13,6 +15,7 @@ import TitleHeader from "components/common/TitleHeader/TitleHeader";
 import styles from "./Login.module.css";
 
 export default function Login() {
+  const today = new Date();
   const navigate = useNavigate();
   const { authMsg, setAuthMsg, signUp, logIn } = useAuth();
   const [isSignup, setIsSignup] = useState(false);
@@ -28,10 +31,11 @@ export default function Login() {
     lockerYn: "Y",
     locker: "1",
     price: 0,
-    startDate: "",
+    startDate: TODAY,
     endDate: "",
     userAgmtYn: "Y",
   });
+
   const [isAlert, setIsAlert] = useState(false);
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -39,7 +43,13 @@ export default function Login() {
     const { username, password } = user;
 
     if (isSignup) {
-      signUp(user)
+      signUp({
+        ...user,
+        endDate: format(
+          today.setMonth(today.getMonth() + Number(user.membership)),
+          DATE_FORMAT
+        ),
+      })
         .then(() => setIsSignup(false))
         .catch(setError);
     } else {

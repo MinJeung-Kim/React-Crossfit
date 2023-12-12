@@ -73,8 +73,7 @@ export function AuthProvider({
 
   const logIn = useCallback(
     async (username: string, password: string): Promise<void> =>
-      authService.login(username, password).then((user) => {
-        console.log('login : ',user);
+      authService.login(username, password).then((user) => { 
         setAuthInfo({ ...user });
       }),
     [authService]
