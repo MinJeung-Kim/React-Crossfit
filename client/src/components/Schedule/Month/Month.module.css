@@ -28,6 +28,7 @@
   align-items: center;
   justify-content: center;
   background: #f7f7f7;
+  font-size: 0.85rem;
 }
 
 .week,
@@ -53,7 +54,7 @@
   justify-content: space-between;
 }
 .day_num {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 .today {
   display: flex;
@@ -61,11 +62,11 @@
   justify-content: center;
   width: 32px;
   height: auto;
-  padding: 0.3rem;
+  padding: 0.5rem;
   border-radius: 50%;
   background: var(--color-accent);
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .over_count {

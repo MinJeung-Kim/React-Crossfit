@@ -31,14 +31,14 @@ export default class MemberService {
 
   async getMembers(username?: string) {
     const query = username ? `?username=${username}` : "";
-    return this.http.fetch(`/members${query}`, {
+    return this.http.fetch(`/users${query}`, {
       method: "GET",
       headers: this.getHeaders(),
     });
   }
 
   async postMember(rezDate: Date, rezTime: string, week: string, note: string) {
-    return this.http.fetch(`/members`, {
+    return this.http.fetch(`/users`, {
       method: "POST",
       headers: this.getHeaders(),
       body: JSON.stringify({
@@ -53,7 +53,7 @@ export default class MemberService {
   }
 
   async deleteMember(MemberId: string) {
-    return this.http.fetch(`/members/${MemberId}`, {
+    return this.http.fetch(`/users/${MemberId}`, {
       method: "DELETE",
       headers: this.getHeaders(),
     });
@@ -66,7 +66,7 @@ export default class MemberService {
     week: string,
     note: string
   ) {
-    return this.http.fetch(`/members/${MemberId}`, {
+    return this.http.fetch(`/users/${MemberId}`, {
       method: "PUT",
       headers: this.getHeaders(),
       body: JSON.stringify({

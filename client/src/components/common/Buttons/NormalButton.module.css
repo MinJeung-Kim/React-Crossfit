@@ -4,7 +4,7 @@
   border-radius: var(--content-button-radius);
   border: 2px solid var(--color-border);
   cursor: pointer;
-  font-size: 0.85rem;
+  font-size: .65rem;
 }
 
 .action {
