@@ -21,8 +21,7 @@
   display: none; /* Chrome, Safari, Opera*/
 }
 
-.form {
-  height: 100%;
+.form { 
   display: flex;
   flex-direction: column;
   justify-content: space-around;

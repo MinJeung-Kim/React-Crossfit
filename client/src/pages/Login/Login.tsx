@@ -67,6 +67,7 @@ export default function Login() {
           <LoginForm
             isSignup={isSignup}
             user={user}
+            setUser={setUser}
             onSubmit={onSubmit}
             onChange={onChange}
           />

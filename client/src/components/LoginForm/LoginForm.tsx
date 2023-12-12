@@ -2,36 +2,57 @@ import { ChangeEvent, FormEvent, useState } from "react";
 
 import { UserResponse } from "service/auth";
 
-import LockIcon from "components/common/icons/LockIcon";
-import UserIcon from "components/common/icons/UserIcon";
 import EyeIcon from "components/common/icons/EyeIcon";
 import MailIcon from "components/common/icons/MailIcon";
+import LockIcon from "components/common/icons/LockIcon";
+import UserIcon from "components/common/icons/UserIcon";
 import PhoneIcon from "components/common/icons/PhoneIcon";
+import LockersIcon from "components/common/icons/LockersIcon";
+import BirthdayIcon from "components/common/icons/BirthdayIcon";
 import UserFocusIcon from "components/common/icons/UserFocusIcon";
 import EyeClosedIcon from "components/common/icons/EyeClosedIcon";
+import MembershipIcon from "components/common/icons/MembershipIcon";
+
+import Select from "components/LoginForm/Select/Select";
 import LoginInput from "components/common/LoginInput/LoginInput";
 import RadioButton from "components/common/RadioButton/RadioButton";
 import LoadDataButton from "components/common/Buttons/LoadDataButton";
 
 import styles from "./LoginForm.module.css";
-import Select from "components/common/Select/Select";
-import BirthdayIcon from "components/common/icons/BirthdayIcon";
 
 type Props = {
   isSignup: boolean;
   user: UserResponse;
+  setUser: React.Dispatch<React.SetStateAction<UserResponse>>;
   onSubmit: (e: FormEvent<HTMLFormElement>) => void;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
+
+const MEMBERSHIP_OPTIONS = [
+  { value: "1", text: "1개월" },
+  { value: "3", text: "3개월" },
+];
 
 export default function LoginForm({
   isSignup,
   onSubmit,
   user,
+  setUser,
   onChange,
 }: Props) {
   const [isShowPw, setIsShowPw] = useState(false);
-  const { username, password, name, email, phone, gender, birthDay } = user;
+  const {
+    username,
+    password,
+    name,
+    email,
+    phone,
+    gender,
+    birthDay,
+    membership,
+    lockerYn,
+    locker,
+  } = user;
 
   return (
     <form className={styles.input_form} onSubmit={onSubmit}>
@@ -108,6 +129,40 @@ export default function LoginForm({
             required={false}
             max="9999-12-31"
           />
+          <Select
+            icon={<MembershipIcon />}
+            name="membership"
+            user={user}
+            value={membership}
+            setUser={setUser}
+            options={MEMBERSHIP_OPTIONS}
+          />
+          <div className={styles.radio_wrap}>
+            <RadioButton
+              name="lockerYn"
+              value="Y"
+              label="사물함 사용"
+              checked={lockerYn === "Y"}
+              onChange={onChange}
+            />
+            <RadioButton
+              name="lockerYn"
+              value="N"
+              label="사물함 미사용"
+              checked={lockerYn === "N"}
+              onChange={onChange}
+            />
+          </div>
+          {lockerYn === "Y" && (
+            <Select
+              icon={<LockersIcon />}
+              name="locker"
+              user={user}
+              value={locker}
+              setUser={setUser}
+              options={MEMBERSHIP_OPTIONS}
+            />
+          )}
         </div>
       )}
 
