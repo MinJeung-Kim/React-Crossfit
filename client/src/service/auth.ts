@@ -1,22 +1,20 @@
-interface HttpClient {
+type HttpClient = {
   fetch(url: string, options: any): Promise<any>;
-}
+};
 
-interface TokenStorage {
+type TokenStorage = {
   saveToken(token: string): void;
   getToken(): string | null;
   clearToken(): void;
-}
+};
 
-interface ApiResponse {
-  message?: string;
-}
-
-interface AuthResponse extends ApiResponse {
+export type AuthResponse = {
+  username: string;
   token: string;
-}
+  message?: string;
+};
 
-export interface UserResponse extends ApiResponse {
+export type UserResponse = {
   username: string;
   password: string;
   name: string;
@@ -31,7 +29,7 @@ export interface UserResponse extends ApiResponse {
   startDate: string;
   endDate: string;
   userAgmtYn: "Y";
-}
+};
 
 export default class AuthService {
   private http: HttpClient;
@@ -42,23 +40,14 @@ export default class AuthService {
     this.tokenStorage = tokenStorage;
   }
 
-  async signup(
-    username: string,
-    password: string,
-    name: string,
-    email: string,
-    phone: string
-  ): Promise<AuthResponse> {
+  async signup(user: UserResponse): Promise<AuthResponse> {
     const data = await this.http.fetch("/auth/signup", {
       method: "POST",
       body: JSON.stringify({
-        username,
-        password,
-        name,
-        email,
-        phone,
+        user,
       }),
     });
+
     this.tokenStorage.saveToken(data.token);
     return data;
   }
@@ -76,7 +65,7 @@ export default class AuthService {
     return data;
   }
 
-  async me(): Promise<UserResponse> {
+  async me(): Promise<AuthResponse> {
     const token = this.tokenStorage.getToken();
     return this.http.fetch("/auth/me", {
       method: "GET",

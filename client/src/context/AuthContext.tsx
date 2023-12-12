@@ -5,7 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import AuthService from "service/auth";
+import AuthService, { AuthResponse, UserResponse } from "service/auth";
 
 export type User = { [key: string]: string } | undefined;
 export type authMsg = {
@@ -13,26 +13,19 @@ export type authMsg = {
   message: string;
 };
 
+// type UserResponse = {
+//   username: string;
+//   email: string;
+// };
+
 type State = {
   authMsg: authMsg;
   setAuthMsg: React.Dispatch<React.SetStateAction<authMsg>>;
-  userInfo: User;
-  setUserInfo: React.Dispatch<React.SetStateAction<User>>;
+  authInfo: AuthResponse | undefined;
+  setAuthInfo: React.Dispatch<React.SetStateAction<AuthResponse| undefined>>;
   logout: () => void;
-  signUp: (
-    username: string,
-    password: string,
-    name: string,
-    email: string,
-    phone: string,
-    gender: "M" | "F"
-  ) => Promise<void>;
+  signUp: (user: UserResponse) => Promise<void>;
   logIn: (username: string, password: string) => Promise<void>;
-};
-
-type UserResponse = {
-  username: string;
-  email: string;
 };
 
 export const AuthContext = createContext<State>({} as State);
@@ -50,55 +43,47 @@ export function AuthProvider({
     status: "warn",
     message: "",
   });
-  const [userInfo, setUserInfo] = useState<User>(undefined);
+  const [authInfo, setAuthInfo] = useState<AuthResponse| undefined>(undefined);
 
   useEffect(() => {
     authErrorEventBus.listen((err: any) => {
-      setUserInfo(undefined);
+      setAuthInfo(undefined);
     });
   }, [authErrorEventBus]);
 
   useEffect(() => {
     authService
       .me()
-      .then((userResponse: UserResponse) => setUserInfo({ ...userResponse }))
+      .then((userResponse: AuthResponse) => setAuthInfo({ ...userResponse }))
       .catch(console.error);
   }, [authService]);
 
   const signUp = useCallback(
-    async (
-      username: string,
-      password: string,
-      name: string,
-      email: string,
-      phone: string
-    ): Promise<void> =>
-      authService
-        .signup(username, password, name, email, phone)
-        .then((user) => {
-          setAuthMsg({
-            ...authMsg,
-            status: "info",
-            message: user.message ?? "",
-          });
-          setUserInfo({ ...user });
-        }),
+    async (user: UserResponse): Promise<void> =>
+      authService.signup(user).then((user) => {
+        setAuthMsg({
+          ...authMsg,
+          status: "info",
+          message: user.message ?? "",
+        });
+        setAuthInfo({ ...user });
+      }),
     [authService]
   );
 
   const logIn = useCallback(
     async (username: string, password: string): Promise<void> =>
-      authService
-        .login(username, password)
-        .then((user) => {console.log(user);
-         setUserInfo({ ...user })}),
+      authService.login(username, password).then((user) => {
+        console.log('login : ',user);
+        setAuthInfo({ ...user });
+      }),
     [authService]
   );
 
   const logout = useCallback(
     async () =>
       authService.logout().then(() => {
-        setUserInfo(undefined);
+        setAuthInfo(undefined);
       }),
     [authService]
   );
@@ -108,8 +93,8 @@ export function AuthProvider({
       value={{
         authMsg,
         setAuthMsg,
-        userInfo,
-        setUserInfo,
+        authInfo,
+        setAuthInfo,
         logout,
         signUp,
         logIn,

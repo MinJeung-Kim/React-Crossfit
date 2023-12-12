@@ -36,10 +36,10 @@ export default function Login() {
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const { username, password, name, email, phone, gender } = user;
+    const { username, password } = user;
 
     if (isSignup) {
-      signUp(username, password, name, email, phone, gender)
+      signUp(user)
         .then(() => setIsSignup(false))
         .catch(setError);
     } else {
@@ -78,7 +78,7 @@ export default function Login() {
             isSignup={isSignup}
             setIsSignup={setIsSignup}
           />
-         {!isSignup && <SocialMedia />}
+          {!isSignup && <SocialMedia />}
         </div>
       </div>
 

@@ -11,7 +11,7 @@ import styles from "./Profile.module.css";
 
 export default function Profile() {
   const navigate = useNavigate();
-  const { userInfo, logout } = useAuth();
+  const { authInfo, logout } = useAuth();
 
   const onLogout = () => {
     if (window.confirm("Do you want to log out?")) {
@@ -34,8 +34,8 @@ export default function Profile() {
       <div className={styles.user}>
         <span
           className={styles.username}
-        >{`Hello👋 ${userInfo?.username}`}</span>
-        <span className={styles.email}>{userInfo?.email}</span>
+        >{`Hello👋 ${authInfo?.username}`}</span>
+        {/* <span className={styles.email}>{authInfo?.email}</span> */}
       </div>
     </div>
   );

@@ -33,7 +33,7 @@ export default function CreateModal({ isOpen, setIsOpen }: Props) {
     setData,
   } = useScheduleContext();
   const [error, setError] = useState("");
-  const { userInfo } = useAuth();
+  const { authInfo } = useAuth();
 
   const handleDateChange = (e: CalendarChangeParams) => {
     const { value } = e.target;
@@ -104,7 +104,7 @@ export default function CreateModal({ isOpen, setIsOpen }: Props) {
         <div className={styles.top_wrapper}>
           <span className="p-input-icon-left">
             <UserIcon />
-            <InputText value={userInfo?.username} disabled />
+            <InputText value={authInfo?.username} disabled />
           </span>
           <Calendar
             value={calendarValue}

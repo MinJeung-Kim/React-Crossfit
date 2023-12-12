@@ -53,7 +53,6 @@ export async function signup(req, res) {
 
 export async function login(req, res) {
   const { username, password } = req.body;
-  console.log("login : ", req.body);
   const user = await userRepository.findByUsername(username);
   if (!user) {
     return res.status(401).json({ message: "Invalid user or password" });
@@ -81,5 +80,6 @@ export async function me(req, res) {
   res.status(200).json({
     token: req.token,
     username: user.username,
+    email: user.email,
   });
 }

@@ -19,11 +19,11 @@ import SideBar from "components/SideBar/SideBar";
 import Header from "components/Header/Header";
 
 const App: React.FC = () => {
-  const { userInfo } = useAuth(); 
+  const { authInfo } = useAuth(); 
 
   return (
     <main className={styles.root}>
-      {userInfo == null ? (
+      {authInfo == null ? (
         <Login />
       ) : (
         <LanguageProvider>
