@@ -83,3 +83,11 @@ export async function me(req, res) {
     email: user.email,
   });
 }
+
+export async function getMembers(req, res) {
+  const username = req.query.username;
+  const data = await (username
+    ? userRepository.findByUsername(username)
+    : userRepository.getAll());
+  res.status(200).json(data);
+}

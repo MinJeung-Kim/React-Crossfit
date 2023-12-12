@@ -4,8 +4,7 @@ import cors from "cors";
 import morgan from "morgan";
 import helmet from "helmet";
 
-import authRoter from "./router/auth.js";
-import memberRoter from "./router/member.js";
+import authRoter from "./router/auth.js"; 
 import scheduleRoter from "./router/schedule.js";
 import { config } from "./config.js";
 import { initSocket } from "./connection/socket.js";
@@ -25,8 +24,7 @@ app.use(cors(corsOptions));
 app.use(morgan("tiny"));
 
 app.use("/auth", authRoter);
-app.use("/schedules", scheduleRoter);
-app.use("/members", memberRoter);
+app.use("/schedules", scheduleRoter); 
 
 app.use((req, res, next) => {
   res.sendStatus(404);
@@ -46,4 +44,4 @@ app.use((error, req, res, next) => {
 sequelize.sync().then(() => {
   console.log(`Server is started.... ${new Date()}`);
   app.listen(config.port);
-});
+}); 

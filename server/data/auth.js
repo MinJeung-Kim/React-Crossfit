@@ -67,12 +67,36 @@ export const User = sequelize.define(
       allowNull: false,
     },
     userAgmtYn: {
-      type: DataTypes.ENUM("Y"), 
+      type: DataTypes.ENUM("Y"),
       allowNull: false,
     },
   }
   // { timestamps: false }
 );
+
+const USER = {
+  attributes: [
+    "id",
+    "username",
+    "password",
+    "name",
+    "email",
+    "phone",
+    "gender",
+    "birthDay",
+    "membership",
+    "lockerYn",
+    "locker",
+    "price",
+    "startDate",
+    "endDate",
+    "userAgmtYn",
+  ],
+};
+
+export async function getAll() {
+  return User.findAll({ ...USER });
+}
 
 export async function findByUsername(username) {
   return User.findOne({ where: { username } });

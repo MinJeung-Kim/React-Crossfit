@@ -36,4 +36,5 @@ router.post("/login", validateCredential, authController.login);
 
 router.get("/me", isAuth, authController.me);
 
+router.get("/", isAuth, authController.getMembers);
 export default router;

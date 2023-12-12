@@ -31,14 +31,14 @@ export default class MemberService {
 
   async getMembers(username?: string) {
     const query = username ? `?username=${username}` : "";
-    return this.http.fetch(`/users${query}`, {
+    return this.http.fetch(`/auth${query}`, {
       method: "GET",
       headers: this.getHeaders(),
     });
   }
 
   async postMember(rezDate: Date, rezTime: string, week: string, note: string) {
-    return this.http.fetch(`/users`, {
+    return this.http.fetch(`/members`, {
       method: "POST",
       headers: this.getHeaders(),
       body: JSON.stringify({

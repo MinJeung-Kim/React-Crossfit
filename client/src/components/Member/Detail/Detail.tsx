@@ -1,11 +1,11 @@
 import { Members } from "service/member";
 
+import { formatPhone } from "util/formatter";
 import Avatar from "components/common/Avatar/Avatar";
 import EmailFillIcon from "components/common/icons/EmailFillIcon";
 import PhoneFillIcon from "components/common/icons/PhoneFillIcon";
 
 import styles from "./Detail.module.css";
-import { formatPhone } from "util/formatter";
 
 type Props = {
   member: Members;
