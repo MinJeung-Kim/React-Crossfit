@@ -18,7 +18,7 @@ export type Member = UserResponse & {
 
 export default function Member() {
   const [members, setMembers] = useState<Member[]>([]);
-  const [member, setMember] = useState<Member>(members[0] || {});
+  const [member, setMember] = useState<Member | null>(null);
   const [viewMode, setViewMode] = useState<"CARD" | "LIST">("CARD");
   const [error, setError] = useState("");
 
@@ -38,14 +38,16 @@ export default function Member() {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.user_list}>
-        <Header viewMode={viewMode} setViewMode={setViewMode} />
-        {viewMode === "LIST" && <List members={members} />}
-        {viewMode === "CARD" && (
-          <Card members={members} setMember={setMember} />
-        )}
+      <div className={styles.user_wrap}>
+        <div className={styles.user_list}>
+          <Header viewMode={viewMode} setViewMode={setViewMode} />
+          {viewMode === "LIST" && <List members={members} />}
+          {viewMode === "CARD" && (
+            <Card members={members} setMember={setMember} />
+          )}
+        </div>
+        {member !== null && <Detail member={member} setMember={setMember} />}
       </div>
-      <Detail member={member} />
     </div>
   );
 }

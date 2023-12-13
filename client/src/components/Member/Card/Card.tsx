@@ -6,7 +6,7 @@ import styles from "./Card.module.css";
 
 type Props = {
   members: Member[];
-  setMember: React.Dispatch<React.SetStateAction<Member>>;
+  setMember: React.Dispatch<React.SetStateAction<Member | null>>;
 };
 
 export default function Card({ members, setMember }: Props) {

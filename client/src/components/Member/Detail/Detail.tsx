@@ -3,6 +3,7 @@ import { formatPhone } from "util/formatter";
 import { dateFormatTonlyDate } from "util/dateUtils";
 
 import Avatar from "components/common/Avatar/Avatar";
+import ClearIcon from "components/common/icons/ClearIcon";
 import LockersIcon from "components/common/icons/LockersIcon";
 import CalendarIcon from "components/common/icons/CalendarIcon";
 import EmailFillIcon from "components/common/icons/EmailFillIcon";
@@ -16,9 +17,10 @@ import styles from "./Detail.module.css";
 
 type Props = {
   member: Member;
+  setMember: React.Dispatch<React.SetStateAction<Member | null>>;
 };
 
-export default function Detail({ member }: Props) {
+export default function Detail({ member, setMember }: Props) {
   const {
     username,
     name,
@@ -36,9 +38,10 @@ export default function Detail({ member }: Props) {
   return (
     <section className={styles.wrapper}>
       <div className={styles.profile}>
+        <ClearIcon onClick={() => setMember(null)} />
         <Avatar src={""} alt={""} className={styles.user_img} />
-        <span>{username}</span>
-        <span>{name}</span>
+        <span className={styles.username}>{username}</span>
+        <span className={styles.name}>{name}</span>
       </div>
       <div className={styles.user_info}>
         <div className={styles.info}>
@@ -98,7 +101,7 @@ export default function Detail({ member }: Props) {
           <DumbbellFillIcon />
           <div className={styles.title_wrap}>
             <span className={styles.title}>기간</span>
-          <span className={styles.text}>{`${startDate} ~ ${endDate}`}</span>
+            <span className={styles.text}>{`${startDate} ~ ${endDate}`}</span>
           </div>
         </div>
       </div>

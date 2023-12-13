@@ -1,5 +1,9 @@
 import { MdClear } from "react-icons/md";
 
-export default function ClearIcon() {
-  return <MdClear size="23" />;
+type Props = {
+  onClick: () => void;
+};
+
+export default function ClearIcon({ onClick }: Props) {
+  return <MdClear size="23" onClick={onClick} />;
 }
