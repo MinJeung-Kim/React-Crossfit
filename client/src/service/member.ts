@@ -1,16 +1,4 @@
-export type Members = {
-  id: number;
-  username: string;
-  name: string;
-  email: string;
-  phone: string;
-  paymentTerm: number;
-  extendedPeriod: number;
-  totalPeriod: number;
-  locker: number;
-  desc: string;
-};
-
+ 
 interface HttpClient {
   fetch(url: string, options: any): Promise<any>;
 }

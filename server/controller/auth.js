@@ -14,6 +14,7 @@ export async function signup(req, res) {
     gender,
     birthDay,
     membership,
+    extension,
     lockerYn,
     locker,
     price,
@@ -37,6 +38,7 @@ export async function signup(req, res) {
     gender,
     birthDay,
     membership,
+    extension,
     lockerYn,
     locker,
     price,
@@ -80,7 +82,7 @@ export async function me(req, res) {
   res.status(200).json({
     token: req.token,
     username: user.username,
-    email: user.email,
+    email: user.email,  
   });
 }
 
@@ -91,3 +93,4 @@ export async function getMembers(req, res) {
     : userRepository.getAll());
   res.status(200).json(data);
 }
+ 

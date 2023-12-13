@@ -1,9 +1,9 @@
-import { Members } from "service/member";
+import { UserResponse } from "service/auth";
 
 import styles from "./List.module.css";
 
 type Props = {
-  members: Members[];
+  members: UserResponse[];
 };
 
 const COLUMNS = [
@@ -19,7 +19,6 @@ const COLUMNS = [
 ];
 
 export default function List({ members }: Props) {
-    
   // const displayMembers = () => {
   //   return (
   //     <ul className={styles.members}>
@@ -39,7 +38,9 @@ export default function List({ members }: Props) {
       {/* <div className={styles.none_data}>데이터가 없습니다.</div> */}
       <ul className={styles.members}>
         {members.map((member) =>
-          COLUMNS.map((col) => <li key={col.header}>{(member as any)[col.field]}</li>)
+          COLUMNS.map((col) => (
+            <li key={col.header}>{(member as any)[col.field]}</li>
+          ))
         )}
       </ul>
     </div>

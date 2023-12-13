@@ -2,7 +2,7 @@ import SQ from "sequelize";
 import { sequelize } from "../db/database.js";
 
 const DataTypes = SQ.DataTypes;
-
+ 
 export const User = sequelize.define(
   "user",
   {
@@ -45,6 +45,9 @@ export const User = sequelize.define(
       values: ["1", "3"],
       allowNull: false,
     },
+    extension: {
+      type: DataTypes.INTEGER,
+    },
     lockerYn: {
       type: DataTypes.ENUM,
       values: ["Y", "N"],
@@ -77,20 +80,22 @@ export const User = sequelize.define(
 const USER = {
   attributes: [
     "id",
-    "username",
-    "password",
+    "username", 
     "name",
     "email",
     "phone",
     "gender",
     "birthDay",
     "membership",
+    "extension",
     "lockerYn",
     "locker",
     "price",
     "startDate",
     "endDate",
     "userAgmtYn",
+    "createdAt",
+    "updatedAt"
   ],
 };
 

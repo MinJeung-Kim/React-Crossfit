@@ -20,6 +20,7 @@ export default function Login() {
   const { authMsg, setAuthMsg, signUp, logIn } = useAuth();
   const [isSignup, setIsSignup] = useState(false);
   const [user, setUser] = useState<UserResponse>({
+    id: 0,
     username: "",
     password: "",
     name: "",
@@ -28,6 +29,7 @@ export default function Login() {
     gender: "M",
     birthDay: "",
     membership: "1",
+    extension: 0,
     lockerYn: "Y",
     locker: "1",
     price: 0,

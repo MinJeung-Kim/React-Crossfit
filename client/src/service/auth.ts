@@ -15,6 +15,7 @@ export type AuthResponse = {
 };
 
 export type UserResponse = {
+  id: number;
   username: string;
   password: string;
   name: string;
@@ -23,6 +24,7 @@ export type UserResponse = {
   gender: "M" | "F";
   birthDay: string;
   membership: "1" | "3";
+  extension: number;
   lockerYn: "Y" | "N";
   locker: "1" | "3";
   price: number;

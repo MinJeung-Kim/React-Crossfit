@@ -1,11 +1,12 @@
-import { Members } from "service/member";
-import Avatar from "components/common/Avatar/Avatar";
+ import Avatar from "components/common/Avatar/Avatar";
+import { Member } from "pages/Member/Member"; 
 
 import styles from "./Card.module.css";
 
+
 type Props = {
-  members: Members[];
-  setMember: React.Dispatch<React.SetStateAction<Members>>;
+  members: Member[];
+  setMember: React.Dispatch<React.SetStateAction<Member>>;
 };
 
 export default function Card({ members, setMember }: Props) {
