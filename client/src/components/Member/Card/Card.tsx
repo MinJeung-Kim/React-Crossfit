@@ -1,5 +1,6 @@
 import Avatar from "components/common/Avatar/Avatar";
 import { Member } from "pages/Member/Member";
+import CreateModal from "../CreateModal";
 
 import styles from "./Card.module.css";
 
@@ -12,12 +13,8 @@ export default function Card({ members, setMember }: Props) {
   return (
     <ul className={styles.wrapper}>
       {members.map((member) => (
-        <li
-          className={styles.user_wrap}
-          key={member.id}
-          onClick={() => setMember(member)}
-        >
-          <div className={styles.users}>
+        <li className={styles.user_wrap} key={member.id}>
+          <div className={styles.users} onClick={() => setMember(member)}>
             <Avatar src={""} alt={""} className={styles.user_img} />
             <div className={styles.user}>
               <span className={styles.name}>{member.name}</span>

@@ -27,6 +27,7 @@ export default function Detail({ member, setMember }: Props) {
     email,
     phone,
     birthDay,
+    gender,
     membership,
     extension,
     lockerYn,
@@ -40,8 +41,10 @@ export default function Detail({ member, setMember }: Props) {
       <div className={styles.profile}>
         <ClearIcon onClick={() => setMember(null)} />
         <Avatar src={""} alt={""} className={styles.user_img} />
-        <span className={styles.username}>{username}</span>
-        <span className={styles.name}>{name}</span>
+        <p className={styles.username}>{username}</p>
+        <span className={styles.name}>{`${name} / ${
+          gender === "M" ? "여" : "남"
+        }`}</span>
       </div>
       <div className={styles.user_info}>
         <div className={styles.info}>

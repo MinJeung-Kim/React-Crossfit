@@ -14,11 +14,17 @@
   align-items: center;
 }
 .search_wrapper svg {
-  color: var(--color-base-accent);
+  color: var(--color-base);
 }
 .search_wrapper input::placeholder {
   color: var(--color-base);
   font-style: italic;
+}
+.search_wrapper svg:nth-last-child(1) {
+  cursor: pointer;
+  padding: 0.2rem;
+  background-color: rgb(223, 226, 229);
+  border-radius: 50%;
 }
 
 .buttons {
