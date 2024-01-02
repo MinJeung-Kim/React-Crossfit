@@ -3,11 +3,24 @@
   height: 5rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 1rem 2.5rem;
   background: #fff;
-  border-top-left-radius: 15px; 
+  border-top-left-radius: 15px;
   border-bottom: 1px solid var(--color-border);
 }
+.search_wrapper {
+  display: flex;
+  align-items: center;
+}
+.search_wrapper svg {
+  color: var(--color-base-accent);
+}
+.search_wrapper input::placeholder {
+  color: var(--color-base);
+  font-style: italic;
+}
+
 .buttons {
   display: flex;
   align-items: center;

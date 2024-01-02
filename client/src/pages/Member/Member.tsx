@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { memberService } from "index";
 import { UserResponse } from "service/auth";
-import Header from "components/Member/Header";
+import Header from "components/Member/Header/Header";
 import List from "components/Member/List/List";
 import Card from "components/Member/Card/Card";
 import Detail from "components/Member/Detail/Detail";

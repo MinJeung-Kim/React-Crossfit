@@ -42,6 +42,7 @@
   align-items: flex-start;
   gap: 1rem;
   padding: 1.3rem;
+  overflow: auto;
 }
 .info {
   display: flex;
